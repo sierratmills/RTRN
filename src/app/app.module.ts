@@ -15,6 +15,8 @@ import { ShopPage } from '../pages/shop/shop';
 import { MapPage } from '../pages/map/map';
 
 import { ComponentsModule } from '../components/components.module';
+import { SearchResultsPage} from '../pages/Search-results/search-results';
+import { StoreSitePage } from '../pages/store-site/store-site';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ComponentsModule } from '../components/components.module';
     MainPage,
     UserprofPage,
     ShopPage,
-    MapPage
+    MapPage,
+    SearchResultsPage,
+    StoreSitePage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { ComponentsModule } from '../components/components.module';
     MainPage,
     UserprofPage,
     ShopPage,
-    MapPage
+    MapPage,
+    SearchResultsPage,
+    StoreSitePage
   ],
   providers: [
     StatusBar,

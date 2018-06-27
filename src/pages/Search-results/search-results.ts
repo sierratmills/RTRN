@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, ViewController } from 'ionic-angular';
+import { StoreSitePage } from '../store-site/store-site';
 
 /**
  * Generated class for the SearchResultsPage page.
@@ -15,11 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchResultsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public modalCtrl: ModalController) {
 
+  }
+ 
+  presentStoreModal() {
+    let profileModal = this.modalCtrl.create(StoreSitePage, { userId: 8675309 });
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    profileModal.present();
+  }
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');
   }
 
+
 }
+
