@@ -11,6 +11,10 @@ import { NewAccountPage } from '../pages/new-account/new-account';
 import { ProfilePage } from '../pages/profile/profile';
 import { MainPage } from '../pages/main/main';
 import { UserprofPage } from '../pages/userprof/userprof';
+import { ShopPage } from '../pages/shop/shop';
+import { MapPage } from '../pages/map/map';
+
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -20,10 +24,13 @@ import { UserprofPage } from '../pages/userprof/userprof';
     NewAccountPage,
     ProfilePage,
     MainPage,
-    UserprofPage
+    UserprofPage,
+    ShopPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -34,7 +41,9 @@ import { UserprofPage } from '../pages/userprof/userprof';
     NewAccountPage,
     ProfilePage,
     MainPage,
-    UserprofPage
+    UserprofPage,
+    ShopPage,
+    MapPage
   ],
   providers: [
     StatusBar,

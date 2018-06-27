@@ -1,13 +1,8 @@
-
 <ion-header>
 
   <ion-navbar>
     <ion-buttons end>
-      <ion-searchbar
-        [(ngModel)]="myInput"
-        [showCancelButton]="shouldShowCancel"
-        (ionInput)="onInput($event)"
-        (ionCancel)="onCancel($event)">
+      <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
       </ion-searchbar>
       <button ion-button small clear=false color="secondary" (click)="navigateToUserProfile()">Profile</button>
       <button ion-button small clear=true color="secondary" (click)="navigateToHomePage()">Log out</button>
@@ -20,15 +15,20 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides color="primary" item-width="100%" item-height="66%">
-      <ion-slide>
-          <button ion-button large color="secondary">Favorite Stores</button>
-      </ion-slide>
-      <ion-slide>
-          <button ion-button large color="secondary">Shopping Lists</button>
-      </ion-slide>
-      <ion-slide>
-          <button ion-button large color="secondary">Recommended for You</button>
-      </ion-slide>
-    </ion-slides>
+  <button ion-button large full color="secondary" (click)="navigateToShopPage()">SHOP</button>
+
+  <ion-slides shouldLockSwipes=false color="primary" item-width="100%" item-height="66%">
+    <ion-slide>
+      <button ion-button large color="secondary">Favorite Stores</button>
+      
+    </ion-slide>
+    <ion-slide>
+      <button ion-button large color="secondary">Shopping Lists</button>
+    </ion-slide>
+    <ion-slide>
+      <button ion-button large color="secondary">Recommended for You</button>
+    </ion-slide>
+  </ion-slides>
+
+  <button ion-button large full color="primary" (click)="navigateToMapPage()">MAP</button>
 </ion-content>
