@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
 import { MainPage } from '../main/main';
 
 /**
@@ -17,12 +16,12 @@ import { MainPage } from '../main/main';
 })
 export class NewAccountPage {
 
-  private firstName = '';
-  private lastName = '';
-  private username = '';
+  public firstName = '';
+  public lastName = '';
+  public username = '';
   public passwordCheck = '';
-  private password = '';
-  private email = '';
+  public password = '';
+  public email = '';
   private newEmail = false;
   private goodPassword = false;
   private newUsername = false;
@@ -33,17 +32,23 @@ export class NewAccountPage {
 
   }
 
-  showToast() {
-    let toast = this.toastCtrl.create({
-      message: 'How to use this app: ...',
-      showCloseButton: true,
-      position: "middle"
-    });
-    toast.present().then(() => {
-      toast.onDidDismiss(() => {
-        this.navigateToMain();
-      });
-    });
+
+  checkAll() {
+    this.checkEmailIsNew();
+    this.checkUsername();
+    this.checkValidPassword();
+
+    if (this.newUsername && this.newEmail && this.goodPassword) {
+      this.addInfoToDatabase();
+      this.showToast();
+    } else if (!this.newUsername) {
+      this.showToastUsernameTaken();
+      this.checkAll();
+    } else if(!this.newEmail){
+      this.showToastEMailTaken();
+    } else if(!this.goodPassword){
+      this.showToastBadPassword();
+    }
   }
 
   checkValidPassword() {
@@ -88,27 +93,8 @@ export class NewAccountPage {
     this.newUsername = true;
   }
 
-  checkAll() {
-    this.checkEmailIsNew();
-    this.checkUsername();
-    this.checkValidPassword();
-
-    if (this.newUsername && this.newEmail && this.goodPassword) {
-      this.addInfoToDatabase();
-      this.showToast();
-    } else if (!this.newUsername) {
-      //toast 
-      //checkAll();
-    }
-  }
-
   addInfoToDatabase() {
     //add user info to a database
-  }
-
-  navigateToProfile() {
-    console.log("Navigating..");
-    this.navCtrl.push(ProfilePage);
   }
 
   navigateToMain() {
@@ -116,8 +102,44 @@ export class NewAccountPage {
     this.navCtrl.push(MainPage);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewAccountPage');
+  showToastBadPassword() {
+    let toast = this.toastCtrl.create({
+      message: "Your password must have one uppercase letter, one lower case letter, one number, and one special character.",
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present();
+  }
+
+  showToastUsernameTaken() {
+    let toast = this.toastCtrl.create({
+      message: "That username is already taken, please choose another username.",
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present();
+  }
+
+  showToastEMailTaken() {
+    let toast = this.toastCtrl.create({
+      message: "That email is being used by another account, please choose another email.",
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present();
+  }
+
+  showToast() {
+    let toast = this.toastCtrl.create({
+      message: 'How to use this app: ...',
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present().then(() => {
+      toast.onDidDismiss(() => {
+        this.navigateToMain();
+      });
+    });
   }
 
 }

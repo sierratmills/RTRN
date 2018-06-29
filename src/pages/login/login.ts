@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { NewAccountPage } from '../new-account/new-account';
-import { ProfilePage } from '../profile/profile';
 import { MainPage } from '../main/main';
 import { UserprofPage } from '../userprof/userprof';
 
@@ -9,8 +8,9 @@ import { UserprofPage } from '../userprof/userprof';
   selector: 'page-login',
   templateUrl: 'login.html'
 })
+
 export class LoginPage {
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public toastCtrl:ToastController) { }
 
   navigateToUserProfile() {
     console.log("Navigating..");
@@ -28,10 +28,45 @@ export class LoginPage {
   }
 
   login() {
-            //check database to see if user exists
-            //if password is wrong toast that tells them wrong password
-            //if user exists then make a user and call profile.setInfo() and navigateToMain()
-            //if user doesn't exist toast that tells them to create new profile
+    if (!this.checkUserExists()) {
+      this.showToastCreateProfile();
+      //if user enters new info check it again
+    } else {
+      while (!this.correctPassword()) {
+        this.showToastIncorrectPassword();
+        //get new input
+      }
+    }
+    //if user exists then make a user and call profile.setInfo() and navigateToMain()
+    this.navigateToMain();
+  }
+
+  checkUserExists(): boolean {
+    //check to see if user is in database
+    return true;
+  }
+
+  correctPassword(): boolean {
+    //check if password is correct
+    return true;
+  }
+
+  showToastCreateProfile() {
+    let toast = this.toastCtrl.create({
+      message: "We don't recognize that username. Please try again or create a new account",
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present();
+  }
+
+  showToastIncorrectPassword() {
+    let toast = this.toastCtrl.create({
+      message: "The password you entered doesn't match your username. Please try again",
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present();
   }
 
 }
