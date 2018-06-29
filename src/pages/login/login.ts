@@ -27,4 +27,11 @@ export class LoginPage {
     this.navCtrl.push(NewAccountPage);
   }
 
+  login() {
+            //check database to see if user exists
+            //if password is wrong toast that tells them wrong password
+            //if user exists then make a user and call profile.setInfo() and navigateToMain()
+            //if user doesn't exist toast that tells them to create new profile
+  }
+
 }

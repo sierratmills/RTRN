@@ -22,6 +22,7 @@ export class MainPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+  
 
   navigateToHomePage() {
     console.log("Navigating..");

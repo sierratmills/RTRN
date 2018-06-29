@@ -1,5 +1,17 @@
 page-new-account {
     .new-account{
-        background-color: map-get($colors, light)
+        background-color: map-get($colors, palepink)
+    }
+
+    .picture{
+        z-index: 2;
+        position: absolute;
+        right: 3%;
+        top: 3%;
+        margin: auto;
+        width: 150px; 
+        height: 150px;
+        border-width: 20px;
+        border-color: map-get($colors, magenta);
     }
 }

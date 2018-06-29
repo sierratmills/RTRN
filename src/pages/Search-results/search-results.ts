@@ -4,6 +4,8 @@ import { ModalController, ViewController } from 'ionic-angular';
 import { StoreSitePage } from '../store-site/store-site';
 import { ProductService } from '../../services/product.service';
 import { Store } from '../../models/store';
+import { MapPage } from '../map/map';
+import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the SearchResultsPage page.
@@ -38,6 +40,15 @@ export class SearchResultsPage {
     console.log('ionViewDidLoad SearchResultsPage');
   }
 
+  goToMap(){
+    this.navCtrl.push(MapPage);
+  }
+
+  navigateToCart(){
+    this.navCtrl.push(CartPage);
+  }
+
 
 }
+
 

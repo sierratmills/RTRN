@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Item } from '../../models/item';
+import { MapPage } from '../map/map';
 
 /**
  * Generated class for the CartPage page.
@@ -19,6 +20,14 @@ export class CartPage {
   public itemList: Array<Item>
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  goToWebsite() {
+
+  }
+
+  goToMap() {
+    this.navCtrl.push(MapPage);
   }
 
   ionViewDidLoad() {
