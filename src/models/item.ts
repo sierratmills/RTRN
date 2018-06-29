@@ -1,4 +1,7 @@
 import { Store } from "./store";
+import { UserCart } from "./userCart";
+import { List } from "./list";
+import { Order } from "./order";
 
 export class Item {
 
@@ -8,6 +11,9 @@ export class Item {
     private store: Store;
     private size: String;
     private image: String;
+    private carts: Array<UserCart>;
+    private list: Array<List>;
+    private orders: Array<Order>;
 
     constructor(public st: Store, public img: String, public pr: String, public url: String,
         public it: String, public sz: String) {
