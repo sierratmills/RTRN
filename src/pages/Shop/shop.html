@@ -6,22 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="magenta">
     <ion-title>Shop</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="shop">
   <ion-list>
     <ion-item>
-        <ion-label color="secondary" stacked>Enter your location</ion-label>
+        <ion-label color="magenta" stacked>Enter your location</ion-label>
         <ion-input type="zip" placeholder="Zip Code"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="secondary" stacked>Choose a shopping category</ion-label>
+      <ion-label color="magenta" stacked>Choose a shopping category</ion-label>
 
         <ion-label>Category</ion-label>
         <ion-select [(ngModel)]="Category">

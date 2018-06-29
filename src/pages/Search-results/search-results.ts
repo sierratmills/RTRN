@@ -6,6 +6,8 @@ import { ProductService } from '../../services/product.service';
 import { Store } from '../../models/store';
 import { MapPage } from '../map/map';
 import { CartPage } from '../cart/cart';
+import { HomePage } from '../home/home';
+import { MainPage } from '../main/main';
 
 /**
  * Generated class for the SearchResultsPage page.
@@ -47,6 +49,10 @@ export class SearchResultsPage {
   navigateToCart(){
     this.navCtrl.push(CartPage);
   }
+
+navigateToMain(){
+      this.navCtrl.push(MainPage);
+    }
 
 
 }

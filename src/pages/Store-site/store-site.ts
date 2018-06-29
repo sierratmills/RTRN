@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Store } from '../../models/store';
+import { SearchResultsPage } from '../Search-results/search-results';
 
 
 /**
@@ -20,6 +21,11 @@ export class StoreSitePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.store = this.navParams.get("storeParameter");
+  }
+
+  navigateToResults() {
+    console.log("Navigating..");
+    this.navCtrl.push(SearchResultsPage);
   }
 
   ionViewDidLoad() {
