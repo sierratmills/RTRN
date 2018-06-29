@@ -18,24 +18,27 @@
 
 <ion-content padding class="main">
   <button ion-button large full color="secondary" (click)="navigateToShopPage()">SHOP</button>
-
+<div class="slide">
   <ion-slides shouldLockSwipes=false color="primary" item-width="100%" item-height="66%">
     <ion-slide>
       <ion-list>
         <button ion-button class="buttons" medium color="magenta">Favorite Stores</button>
-        <ion-img style="width: 100%; height: 530px;" src="../../assets/imgs/favorites.jpg"></ion-img>
+        <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/favorites.jpg"></ion-img>
       </ion-list>
     </ion-slide>
     <ion-slide>
       <button ion-button class="buttons" medium color="magenta">Shopping Lists</button>
+      <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/list.jpg"></ion-img>
     </ion-slide>
     <ion-slide>
       <button ion-button class="buttons" medium color="magenta">Order History</button>
+      <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/packages.jpg"></ion-img>
     </ion-slide>
     <ion-slide>
         <button ion-button class="buttons" medium color="magenta">Online Shops</button>
+        <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/online.jpg"></ion-img>
       </ion-slide>
   </ion-slides>
-
+</div>
   <button ion-button large full color="primary" class="map" (click)="navigateToMapPage()">MAP</button>
 </ion-content>
