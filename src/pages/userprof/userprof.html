@@ -6,37 +6,41 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Your Profile</ion-title>
-    <ion-buttons end>
-      <button ion-button end small clear=true color="secondary" (click)="navigateToHomePage()">Log out</button>
-    </ion-buttons>
-  </ion-navbar>
+    <ion-navbar color="magenta">
+        <ion-title>Your Profile</ion-title>
+        <ion-buttons end>
+            <button ion-button end small clear=true color="secondary" (click)="navigateToHomePage()">Log out</button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <ion-item>
-        <ion-label stacked>Name</ion-label>
-        <ion-title type="User's Full Name">{{currUser?.fullname}}</ion-title>
-    </ion-item>
+<ion-content padding class="back">
 
-    <ion-item>
-        <ion-label stacked>Username</ion-label>
-        <ion-title type="Username">{{currUser?.username}}</ion-title>
-    </ion-item>
+    <ion-img class="picture" src="../../assets/imgs/pictureholder.png"></ion-img>
+    <ion-list class="info">
+        <ion-item>
+            <ion-label stacked>Name</ion-label>
+            <ion-title type="User's Full Name">{{currUser?.fullname}}</ion-title>
+        </ion-item>
 
-    <ion-item>
-        <ion-label stacked>Default Location</ion-label>
-        <ion-title type="User's Zip Code">{{currUser?.zipcode}}</ion-title>
-    </ion-item>
+        <ion-item>
+            <ion-label stacked>Username</ion-label>
+            <ion-title type="Username">{{currUser?.username}}</ion-title>
+        </ion-item>
 
-    <ion-item>
-        <ion-label stacked>Payment Method</ion-label>
-        <ion-title type="User's Zip Code">{{currUser?.paymenttype}}</ion-title>
-    </ion-item>
+        <ion-item>
+            <ion-label stacked>Default Location</ion-label>
+            <ion-title type="User's Zip Code">{{currUser?.zipcode}}</ion-title>
+        </ion-item>
 
-    <button ion-button small color="secondary">Change Password</button>
-    <button ion-button small color="secondary" (click)="navigateToProfile()">Edit Profile</button>
+        <ion-item>
+            <ion-label stacked>Payment Method</ion-label>
+            <ion-title type="User's Zip Code">{{currUser?.paymenttype}}</ion-title>
+        </ion-item>
+
+    <button ion-button small color="magenta">Change Password</button>
+    <button ion-button small color="magenta" (click)="navigateToProfile()">Edit Profile</button>
+</ion-list>
 </ion-content>

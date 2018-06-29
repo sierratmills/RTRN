@@ -9,7 +9,7 @@
 
 <ion-content padding class="new-account">
 
-  <ion-item>
+  <ion-item class="name">
 
     <ion-label color="magenta" stacked>First Name:</ion-label>
 
@@ -17,7 +17,7 @@
   </ion-item>
 
 
-  <ion-item>
+  <ion-item class="name">
 
     <ion-label color="magenta" stacked>Last Name:</ion-label>
 
@@ -55,14 +55,15 @@
     <ion-input type="email" placeholder="Password Input" [(ngModel)]="passwordCheck" name="passwordCheck"></ion-input>
   </ion-item>
 
+  <ion-img class="picture" src="../../assets/imgs/pictureholder.png"></ion-img>
 
-  <ion-item class="picture">
-
-    <ion-label color="magenta" stacked>Add Photo:</ion-label>
-    <ion-img style="width: 150px; height: 150px;" src="../../assets/imgs/pictureholder.png"></ion-img>
-
-  </ion-item>
-
+  <button class="cambutton" color="black" clear=true ion-button icon-only>
+    <ion-list>
+    
+    <ion-icon medium color="black" name="camera"></ion-icon>
+    <ion-label color="black" stacked> Upload photo</ion-label>
+  </ion-list>
+  </button>
 
   <button ion-button color="magenta" (click)="checkAll()"> Done! </button>
 
