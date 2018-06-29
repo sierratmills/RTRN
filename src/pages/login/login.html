@@ -1,24 +1,23 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>
       Sign in
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="login">
   <ion-list>
     <ion-item>
       <ion-label color="secondary" stacked>Email</ion-label>
       <ion-input type="email" placeholder="Email Input"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label color="secondary" stacked>Password</ion-label>
       <ion-input type="password" placeholder="Password Input"></ion-input>
     </ion-item>
     <button ion-button color="secondary" (click)="navigateToMain()">LOGIN</button>
-    <button ion-button small clear=true color="primary">Forgot password?</button>
+    <button ion-button small clear=true color="secondary" >Forgot password?</button>
   </ion-list>
   Don't have an account? 
   <button ion-button small clear=true color="secondary" (click)="navigateToNewAccount()">Create Account</button>

@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>
       Create Account
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="new-account">
   <ion-list>
     <ion-item>
       <ion-label color="secondary" stacked>Email</ion-label>
-      <ion-input type="email" placeholder="Email Input"></ion-input>
+      <ion-input type="email" placeholder="Email Input" value="" [(ngModel)]="userEmail"></ion-input>
     </ion-item>
 
     <ion-item>

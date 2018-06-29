@@ -4,11 +4,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-title>
-      Welcome!
-      </ion-title>
-  <button ion-button large color="secondary" (click)="navigateToLogin()">Login</button>
-  <button ion-button large color="secondary" (click)="navigateToNewAccount()">Create Account</button>
+<ion-content padding class="home">
+  <ion-title text-center>
+    <ion-img style="width: 200px; height: 200px;" align="center" src="../../assets/imgs/download.jpeg"></ion-img>
+  </ion-title> 
+  <ion-title text-center>
+    RTRN
+  </ion-title>
+  <ion-list>
+  <ion-title text-center>
+    <button ion-button large color="secondary" (click)="navigateToLogin()">Login</button>
+  </ion-title>
+  <ion-title text-center>
+    <button ion-button large color="secondary" (click)="navigateToNewAccount()">Create Account</button>
+  </ion-title>
+  </ion-list>
   
 </ion-content>

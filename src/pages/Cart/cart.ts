@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Store } from '../../models/store';
-
+import { Item } from '../../models/item';
 
 /**
- * Generated class for the StoreSitePage page.
+ * Generated class for the CartPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,18 +11,18 @@ import { Store } from '../../models/store';
 
 @IonicPage()
 @Component({
-  selector: 'page-store-site',
-  templateUrl: 'store-site.html',
+  selector: 'page-cart',
+  templateUrl: 'cart.html',
 })
-export class StoreSitePage {
-  public store: Store;
+export class CartPage {
+
+  public itemList: Array<Item>
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.store = this.navParams.get("storeParameter");
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StoreSitePage');
+    console.log('ionViewDidLoad CartPage');
   }
-  
+
 }

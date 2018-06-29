@@ -18,6 +18,7 @@ export class NewAccountPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {  }
 
+  
   navigateToProfile() {
     console.log("Navigating..");
     this.navCtrl.push(ProfilePage);

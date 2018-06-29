@@ -19,17 +19,22 @@
 <ion-content padding>
     <ion-item>
         <ion-label stacked>Name</ion-label>
-        <ion-input type="User's Full Name"></ion-input>
+        <ion-title type="User's Full Name">{{currUser?.fullname}}</ion-title>
     </ion-item>
 
     <ion-item>
         <ion-label stacked>Username</ion-label>
-        <ion-input type="Username"></ion-input>
+        <ion-title type="Username">{{currUser?.username}}</ion-title>
     </ion-item>
 
     <ion-item>
         <ion-label stacked>Default Location</ion-label>
-        <ion-input type="User's Zip Code"></ion-input>
+        <ion-title type="User's Zip Code">{{currUser?.zipcode}}</ion-title>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>Payment Method</ion-label>
+        <ion-title type="User's Zip Code">{{currUser?.paymenttype}}</ion-title>
     </ion-item>
 
     <button ion-button small color="secondary">Change Password</button>

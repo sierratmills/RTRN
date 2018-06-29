@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { UserprofPage } from '../userprof/userprof';
 import { ShopPage } from '../shop/shop';
 import { MapPage } from '../map/map';
+import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the MainPage page.
@@ -25,6 +26,11 @@ export class MainPage {
   navigateToHomePage() {
     console.log("Navigating..");
     this.navCtrl.push(HomePage);
+  }
+
+  navigateToShoppingCart() {
+    console.log("Navigating..");
+    this.navCtrl.push(CartPage);
   }
 
   navigateToMapPage() {

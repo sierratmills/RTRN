@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController, ViewController } from 'ionic-angular';
 import { StoreSitePage } from '../store-site/store-site';
+import { ProductService } from '../../services/product.service';
+import { Store } from '../../models/store';
 
 /**
  * Generated class for the SearchResultsPage page.
@@ -17,12 +19,15 @@ import { StoreSitePage } from '../store-site/store-site';
 })
 export class SearchResultsPage {
 
-  constructor(public modalCtrl: ModalController) {
+  public stores: Array<Store>;
 
+  constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController, 
+    ) {
+    
   }
  
-  presentStoreModal() {
-    let profileModal = this.modalCtrl.create(StoreSitePage, { userId: 8675309 });
+  presentStoreModal(store: StoreSitePage) {
+    let profileModal = this.modalCtrl.create(StoreSitePage, { storeParameter: store, userId: 8675309 });
     profileModal.onDidDismiss(data => {
       console.log(data);
     });

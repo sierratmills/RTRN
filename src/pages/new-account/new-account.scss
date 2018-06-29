@@ -1,3 +1,5 @@
 page-new-account {
-
+    .new-account{
+        background-color: map-get($colors, light)
+    }
 }
