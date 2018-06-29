@@ -1,8 +1,8 @@
 export class SearchParameters{
-        protected zipcode:String;
-        protected category: String;
-        protected lat: String;
-        protected long: String;
+        private zipcode:String;
+        private category: String;
+        private lat: String;
+        private long: String;
     
         constructor(zip:String, cat:String){
             this.zipcode = zip;

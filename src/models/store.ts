@@ -1,15 +1,15 @@
 import { Item } from "./item";
 
 export class Store {
-        protected storename: String;
-        protected storetype: String;
-        protected address: String;
-        protected URL: String;
-        protected lat: String;
-        protected long: String;
-        protected products: Array<Item>;
+        private storename: String;
+        private storetype: String;
+        private address: String;
+        private URL: String;
+        private lat: String;
+        private long: String;
+        private products: Array<Item>;
     
-        constructor(public store: String, protected type: String, public ad: String, public url: String) {
+        constructor(public store: String, private type: String, public ad: String, public url: String) {
             this.storename = store;
             this.storetype = type;
             this.address = ad;

@@ -2,12 +2,12 @@ import { Store } from "./store";
 
 export class Item {
 
-    protected itemtype: String;
-    protected price: String;
-    protected URL: String;
-    protected store: Store;
-    protected size: String;
-    protected image: String;
+    private itemtype: String;
+    private price: String;
+    private URL: String;
+    private store: Store;
+    private size: String;
+    private image: String;
 
     constructor(public st: Store, public img: String, public pr: String, public url: String,
         public it: String, public sz: String) {

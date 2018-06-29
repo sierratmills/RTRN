@@ -1,33 +1,44 @@
-export class User{
-      protected firstname: String;
-      protected lastname: String;
-      protected name: String;
-      protected username: String;
-      protected email: String;
-      protected image: String;
-    protected payment: String;
-  
-      constructor(n:String, un:String, em: String, im:String){
-          this.name = n;
-          this.username = un;
-          this.email = em;
-          this.image = im;
-      }
-  
-      getName():String{
-          return this.name;
-      }
-  
-      getUsername():String{
-          return this.username;
-      }
-  
-      getEmail():String{
-          return this.email;
-      }
-  
-      getImage():String{
-          return this.image;
-      }
-  
+export class User {
+  private firstname: String;
+  private lastname: String;
+  private username: String;
+  private email: String;
+  private image: String;
+  private payment: String;
+  private password: String;
+
+  constructor(fn: String, ln: String, un: String, em: String, im: String, pay: String, pas: String) {
+    this.firstname = fn;
+    this.lastname = ln;
+    this.username = un;
+    this.email = em;
+    this.image = im;
+    this.payment = pay;
+    this.password = pas;
   }
+
+  getFirstName(): String {
+    return this.firstname;
+  }
+
+  getLastName(): String {
+    return this.lastname;
+  }
+
+  getPassword(): String {
+    return this.password;
+  }
+
+  getUsername(): String {
+    return this.username;
+  }
+
+  getEmail(): String {
+    return this.email;
+  }
+
+  getImage(): String {
+    return this.image;
+  }
+
+}
