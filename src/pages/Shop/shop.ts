@@ -14,7 +14,7 @@ import { StoreSitePage } from '../store-site/store-site';
 @Component({
   selector: 'page-shop',
   templateUrl: 'shop.html',
-})
+}) 
 export class ShopPage {
 
   public results: Array<StoreSitePage>;
