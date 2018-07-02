@@ -1,3 +1,7 @@
+import { List } from "./list";
+import { Order } from "./order";
+import { Item } from "ionic-angular/umd";
+
 export class User {
   private firstname: String;
   private lastname: String;
@@ -6,6 +10,9 @@ export class User {
   private image: String;
   private payment: String;
   private password: String;
+  private userLists: Array<List>;
+  private userHistory: Array<Order>;
+  private cart: Array<Item>;
 
   constructor(fn: String, ln: String, un: String, em: String, im: String, pay: String, pas: String) {
     this.firstname = fn;
