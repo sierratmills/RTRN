@@ -1,11 +1,14 @@
-import { UserLists } from "./userLists";
+
 import { Item } from "./item";
+import { User } from "./user";
 
 export class List{
-    private users: Array<UserLists>;
+    private listname: String
+    private users: Array<User>
     private items: Array<Item>;
 
-    constructor(us: Array<UserLists>, it:Array<Item>){
+    constructor(n: String, us: Array<User>, it:Array<Item>){
+        this.listname = n;
         this.users=us;
         this.items=it;
     }
