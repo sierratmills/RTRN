@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { NewAccountPage } from '../new-account/new-account';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'page-home',
@@ -9,7 +12,24 @@ import { NewAccountPage } from '../new-account/new-account';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) { }
+  posts: any;
+
+  constructor(public navCtrl: NavController, public http: Http) {
+    if (localStorage.getItem("TOKEN")) {
+      alert("Already logged in");
+    
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN")).subscribe(
+        result => {
+          console.log(result.json());
+        },
+  
+        err => {
+          // Invalid, login!
+        }
+      );
+
+    }
+  }
 
   navigateToLogin() {
     console.log("Navigating..");

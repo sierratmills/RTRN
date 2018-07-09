@@ -6,52 +6,77 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="magenta">
     <ion-title>Search Results</ion-title>
     <ion-title end>{{shop?.storetype}}</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="navigateToMain()">
-            <ion-icon medium color="magenta" name="home"></ion-icon>
-        </button>
-      
-          <button ion-button icon-only (click)="navigateToCart()">
-              <ion-icon medium color="magenta" name="cart"></ion-icon>
-          </button>
-      
+      <button ion-button icon-only (click)="navigateToMain()">
+        <ion-icon medium color="secondary" name="home"></ion-icon>
+      </button>
+
+      <button ion-button icon-only (click)="navigateToCart()">
+        <ion-icon medium color="secondary" name="cart"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
-  
-  <ion-content padding>
-    <ion-list>
-      <h1>CATEGORY</h1>
-      <ion-item>
-        <h2>store name</h2>
-        <h3>Address</h3>
-        <button ion-button (click)="presentStoreModal()">shop</button>
-        <button ion-button (click)="goToMap()">view on map</button>
-      </ion-item>
-    
-      <ion-item>
-        <h2>store name</h2>
-        <h3>Address</h3>
-        <button ion-button (click)="presentStoreModal()">shop</button>
-        <button ion-button (click)="goToMap()">view on map</button>
-      </ion-item>
-    
-      <ion-item>
-        <h2>store name</h2>
-        <h3>Address</h3>
-        <button ion-button (click)="presentStoreModal()">shop</button>
-        <button ion-button (click)="goToMap()">view on map</button>
-      </ion-item>
-    
-      <ion-item>
-        <h2>store name</h2>
-        <h3>Address</h3>
-        <button ion-button (click)="presentStoreModal()">shop</button>
-        <button ion-button (click)="goToMap()">view on map</button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+
+<ion-content padding class="search">
+
+  <ion-list>
+
+    <h1>CATEGORY</h1>
+
+    <ion-item>
+      <ion-list>
+
+        <h2 style="font-size: 1.5 em">Store name</h2>
+        <h3 style="font-size: 1 em">Address</h3>
+
+        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
+
+        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
+      </ion-list>
+    </ion-item>
+
+    <ion-item>
+
+      <ion-list>
+
+        <h2 style="font-size: 1.5 em">Store name</h2>
+        <h3 style="font-size: 1 em">Address</h3>
+
+        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
+
+        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
+      </ion-list>
+    </ion-item>
+
+    <ion-item>
+
+      <ion-list>
+
+        <h2 style="font-size: 1.5 em">Store name</h2>
+        <h3 style="font-size: 1 em">Address</h3>
+
+        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
+
+        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
+      </ion-list>
+    </ion-item>
+
+    <ion-item>
+
+      <ion-list>
+
+        <h2 style="font-size: 1.5 em">Store name</h2>
+        <h3 style="font-size: 1 em">Address</h3>
+
+        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
+
+        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
+      </ion-list>
+    </ion-item>
+  </ion-list>
+</ion-content>
