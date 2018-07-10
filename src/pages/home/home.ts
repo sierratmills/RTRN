@@ -4,7 +4,6 @@ import { LoginPage } from '../login/login';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { NewAccountPage } from '../new-account/new-account';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 
@@ -13,16 +12,6 @@ import 'rxjs/add/operator/map';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  posts: any;
-
-<<<<<<< HEAD
-  constructor(public navCtrl: NavController,  public http: Http) {
- 
-    this.http.get('https://www.reddit.com/r/gifs/new/.json?limit=10').map(res => res.json()).subscribe(data => {
-        this.posts = data.data.children;
-    });
-    
-=======
   posts: any;
 
   constructor(public navCtrl: NavController, public http: Http) {
@@ -40,7 +29,6 @@ export class HomePage {
       );
 
     }
->>>>>>> 72d686b2a65d70866dbf1601b4b11524e156a602
   }
 
   navigateToLogin() {
