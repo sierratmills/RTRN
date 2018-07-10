@@ -10,11 +10,11 @@
   <ion-list>
     <ion-item>
       <ion-label color="magenta" stacked>Email</ion-label>
-      <ion-input type="email" placeholder="Email Input"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email Input"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="magenta" stacked>Password</ion-label>
-      <ion-input type="password" placeholder="Password Input"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password Input"></ion-input>
     </ion-item>
     <button ion-button color="secondary" (click)="navigateToMain()">LOGIN</button>
     <button ion-button small clear=true color="magenta" >Forgot password?</button>

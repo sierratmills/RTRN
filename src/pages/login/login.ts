@@ -3,6 +3,7 @@ import { NavController, ToastController } from 'ionic-angular';
 import { NewAccountPage } from '../new-account/new-account';
 import { MainPage } from '../main/main';
 import { UserprofPage } from '../userprof/userprof';
+import { Http } from "../../../node_modules/@angular/http";
 
 @Component({
   selector: 'page-login',
@@ -10,7 +11,18 @@ import { UserprofPage } from '../userprof/userprof';
 })
 
 export class LoginPage {
-  constructor(public navCtrl: NavController, public toastCtrl:ToastController) { }
+
+  public email = '';
+
+  public password = '';
+
+  public complexObject: any;
+
+  public flag: boolean = true;
+
+  constructor(public navCtrl: NavController, public toastCtrl:ToastController, private http: Http) { 
+
+  }
 
   navigateToUserProfile() {
     console.log("Navigating..");
@@ -28,15 +40,29 @@ export class LoginPage {
   }
 
   login() {
-    if (!this.checkUserExists()) {
-      this.showToastCreateProfile();
-      //if user enters new info check it again
-    } else {
-      while (!this.correctPassword()) {
-        this.showToastIncorrectPassword();
-        //get new input
-      }
-    }
+    this.http
+      .post("http://localhost:3000/login", {
+        email: this.email,
+        password: this.password
+      })
+      .subscribe(
+        result => {
+          console.log(result);
+
+          var jwtResponse = result.json();
+          var token = jwtResponse.token;
+
+          localStorage.setItem("TOKEN", token);
+
+          let t = localStorage.getItem("TOKEN");
+        },
+
+        err => {
+          this.showToastIncorrectLogin();
+          console.log(err);
+        }
+      );    
+
     //if user exists then make a user and call profile.setInfo() and navigateToMain()
     this.navigateToMain();
   }
@@ -51,18 +77,9 @@ export class LoginPage {
     return true;
   }
 
-  showToastCreateProfile() {
+  showToastIncorrectLogin() {
     let toast = this.toastCtrl.create({
-      message: "We don't recognize that username. Please try again or create a new account",
-      showCloseButton: true,
-      position: "middle"
-    });
-    toast.present();
-  }
-
-  showToastIncorrectPassword() {
-    let toast = this.toastCtrl.create({
-      message: "The password you entered doesn't match your username. Please try again",
+      message: "The email or password you entered is not correct. Please try again",
       showCloseButton: true,
       position: "middle"
     });
