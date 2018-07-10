@@ -21,6 +21,8 @@ import { StoreSitePage } from '../pages/store-site/store-site';
 import { ProductService } from '../services/product.service';
 import { CartPage } from '../pages/cart/cart';
 
+import { FormsModule } from '@angular/forms'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -40,7 +42,8 @@ import { CartPage } from '../pages/cart/cart';
     BrowserModule,
     HttpModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
