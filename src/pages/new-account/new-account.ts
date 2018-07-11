@@ -32,79 +32,83 @@ export class NewAccountPage {
 
   }
 
-  createUser(){
+  createUser() {
     this.checkValidPassword();
 
-    if(!this.goodPassword) {
+    if (!this.goodPassword) {
       this.showToastBadPassword();
     }
-    this.http
-      .post("http://localhost:3000/register", {
-        email: this.email,
-        password: this.password,
-        firstname: this.firstName,
-        lastname: this.lastName,
-        username: this.username
-      })
-      .subscribe(
-        result => {
-          console.log(result);
+    else {
+      this.http
+        .post("http://localhost:3000/register", {
+          email: this.email,
+          password: this.password,
+          firstname: this.firstName,
+          lastname: this.lastName,
+          username: this.username
+        })
+        .subscribe(
+          result => {
+            console.log(result);
 
-          var jwtResponse = result.json();
-          var token = jwtResponse.token;
+            var jwtResponse = result.json();
+            var token = jwtResponse.token;
 
-          localStorage.setItem("TOKEN", token);
+            localStorage.setItem("TOKEN", token);
 
-          let t = localStorage.getItem("TOKEN");
+            let t = localStorage.getItem("TOKEN");
 
-          this.navigateToMain();
+            this.navigateToMain();
 
-        },
+          },
 
-        err => {
-          if (err === 'username already exists') {
-            this.showToastUsernameTaken();
-          } else if (err === 'user already exists') {
-            this.showToastEmailTaken();
-          } else if (err === 'user is missing data') {
-            this.showToastMissing();
+          err => {
+            var errObject = err.json();
+            if (errObject.message === 'username already exists') {
+              this.showToastUsernameTaken();
+            } else if (errObject.message === 'user already exists') {
+              this.showToastEmailTaken();
+            } else if (errObject.message === 'user is missing data') {
+              this.showToastMissing();
+            }
+            console.log(err);
           }
-          console.log(err);
-        }
-      );
+        );
+    }
   }
 
 
   checkValidPassword() {
     var uppercase = false;
     var lowercase = false;
-    var specialcharacter = false;
     var number = false;
     var matching = false;
 
     var loop = 0;
     for (loop = 0; loop < this.password.length; loop++) {
-      if ((this.password.charCodeAt(loop) >= 33 && this.password.charCodeAt(loop) <= 47)
-        || (this.password.charCodeAt(loop) >= 58 && this.password.charCodeAt(loop) <= 64)
-        || (this.password.charCodeAt(loop) >= 91 && this.password.charCodeAt(loop) <= 96)
-        || (this.password.charCodeAt(loop) >= 123 && this.password.charCodeAt(loop) <= 126)) {
-        specialcharacter = true;
-      } else if (this.password.charCodeAt(loop) >= 48 && this.password.charCodeAt(loop) <= 57) {
+      if (this.password.charCodeAt(loop) >= 48 && this.password.charCodeAt(loop) <= 57) {
         number = true;
       } else if (this.password.charCodeAt(loop) >= 65 && this.password.charCodeAt(loop) <= 90) {
         uppercase = true;
       } else if (this.password.charCodeAt(loop) >= 97 && this.password.charCodeAt(loop) <= 122) {
         lowercase = true;
-      } else if (this.password === this.passwordCheck) {
-        matching = true;
       }
     }
 
-    if (!(uppercase && lowercase && number && matching && specialcharacter && this.password.length < 6)) {
-      this.goodPassword = false;
+    if (this.password === this.passwordCheck) {
+      matching = true;
     }
 
-    this.goodPassword = true;;
+    console.log("num:" + number);
+    console.log("upper:" + uppercase);
+    console.log("lower:" + lowercase);
+    console.log("matching:" + matching);
+
+    if (!(uppercase && lowercase && number && matching && this.password.length <= 6)) {
+      this.goodPassword = false;
+    } else {
+      this.goodPassword = true;
+    }
   }
 
   navigateToMain() {
@@ -114,7 +118,7 @@ export class NewAccountPage {
 
   showToastBadPassword() {
     let toast = this.toastCtrl.create({
-      message: "Your password must have one uppercase letter, one lower case letter, one number, and one special character.",
+      message: "Your password must be at least 6 characters and contain one uppercase letter, one lower case letter, and one number.",
       showCloseButton: true,
       position: "middle"
     });
