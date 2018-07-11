@@ -33,10 +33,12 @@ export class NewAccountPage {
   }
 
   createUser() {
+    var badpassword: boolean;
     this.checkValidPassword();
-
     if (!this.goodPassword) {
-      this.showToastBadPassword();
+      badpassword=true;
+      console.log("bad password");
+      return;
     }
     else {
       this.http
@@ -75,6 +77,7 @@ export class NewAccountPage {
           }
         );
     }
+    if (badpassword) this.showToastBadPassword();
   }
 
 
@@ -104,7 +107,7 @@ export class NewAccountPage {
     console.log("lower:" + lowercase);
     console.log("matching:" + matching);
 
-    if (!(uppercase && lowercase && number && matching && this.password.length <= 6)) {
+    if (!(uppercase && lowercase && number && matching && this.password.length >= 6)) {
       this.goodPassword = false;
     } else {
       this.goodPassword = true;
