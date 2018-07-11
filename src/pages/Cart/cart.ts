@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { MapPage } from '../map/map';
+import { PaymentPage } from '../payment/payment';
 
 /**
  * Generated class for the CartPage page.
@@ -24,6 +25,10 @@ export class CartPage {
 
   goToWebsite() {
 
+  }
+
+  goToPayment() {
+    this.navCtrl.push(PaymentPage);
   }
 
   goToMap() {

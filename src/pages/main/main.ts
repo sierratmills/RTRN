@@ -22,7 +22,10 @@ export class MainPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  
+
+  logOut() {
+    this.navCtrl.setRoot(HomePage);
+  }
 
   navigateToHomePage() {
     console.log("Navigating..");

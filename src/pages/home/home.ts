@@ -16,7 +16,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public http: Http) {
     if (localStorage.getItem("TOKEN")) {
-      alert("Already logged in");
     
       this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN")).subscribe(
         result => {
