@@ -55,6 +55,7 @@ export class LoginPage {
           localStorage.setItem("TOKEN", token);
 
           let t = localStorage.getItem("TOKEN");
+          this.navigateToMain();
         },
 
         err => {
@@ -64,7 +65,6 @@ export class LoginPage {
       );    
 
     //if user exists then make a user and call profile.setInfo() and navigateToMain()
-    this.navigateToMain();
   }
 
   checkUserExists(): boolean {

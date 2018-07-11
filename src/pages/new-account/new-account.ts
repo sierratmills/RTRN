@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { MainPage } from '../main/main';
+import { Http } from "../../../node_modules/@angular/http";
+
 
 /**
  * Generated class for the NewAccountPage page.
@@ -22,34 +24,56 @@ export class NewAccountPage {
   public passwordCheck = '';
   public password = '';
   public email = '';
-  private newEmail = false;
   private goodPassword = false;
-  private newUsername = false;
 
 
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private http: Http) {
 
   }
 
-
-  checkAll() {
-    this.checkEmailIsNew();
-    this.checkUsername();
+  createUser(){
     this.checkValidPassword();
 
-    if (this.newUsername && this.newEmail && this.goodPassword) {
-      this.addInfoToDatabase();
-      this.showToast();
-    } else if (!this.newUsername) {
-      this.showToastUsernameTaken();
-      this.checkAll();
-    } else if(!this.newEmail){
-      this.showToastEMailTaken();
-    } else if(!this.goodPassword){
+    if(!this.goodPassword) {
       this.showToastBadPassword();
     }
+    this.http
+      .post("http://localhost:3000/register", {
+        email: this.email,
+        password: this.password,
+        firstname: this.firstName,
+        lastname: this.lastName,
+        username: this.username
+      })
+      .subscribe(
+        result => {
+          console.log(result);
+
+          var jwtResponse = result.json();
+          var token = jwtResponse.token;
+
+          localStorage.setItem("TOKEN", token);
+
+          let t = localStorage.getItem("TOKEN");
+
+          this.navigateToMain();
+
+        },
+
+        err => {
+          if (err === 'username already exists') {
+            this.showToastUsernameTaken();
+          } else if (err === 'user already exists') {
+            this.showToastEmailTaken();
+          } else if (err === 'user is missing data') {
+            this.showToastMissing();
+          }
+          console.log(err);
+        }
+      );
   }
+
 
   checkValidPassword() {
     var uppercase = false;
@@ -83,20 +107,6 @@ export class NewAccountPage {
     this.goodPassword = true;;
   }
 
-  checkEmailIsNew() {
-    //see if email has been used before
-    this.newEmail = true;
-  }
-
-  checkUsername() {
-    //check to see if username exists, if it does, prompt user to choose a different username
-    this.newUsername = true;
-  }
-
-  addInfoToDatabase() {
-    //add user info to a database
-  }
-
   navigateToMain() {
     console.log("Navigating..");
     this.navCtrl.push(MainPage);
@@ -120,9 +130,18 @@ export class NewAccountPage {
     toast.present();
   }
 
-  showToastEMailTaken() {
+  showToastEmailTaken() {
     let toast = this.toastCtrl.create({
       message: "That email is being used by another account, please choose another email.",
+      showCloseButton: true,
+      position: "middle"
+    });
+    toast.present();
+  }
+
+  showToastMissing() {
+    let toast = this.toastCtrl.create({
+      message: "Please make sure to fill out all required fields.",
       showCloseButton: true,
       position: "middle"
     });
