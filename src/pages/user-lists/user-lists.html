@@ -63,5 +63,12 @@
         <button ion-button small class="view" color="secondary" (click)="goToList()">View list</button>
       </ion-list>
     </ion-item>
-  </ion-list>
+
+  <ion-item >
+    <ion-label color="secondary" stacked>New List</ion-label>
+    <ion-input type="newlist" [(ngModel)]="listname" name="list" placeholder="List Name"></ion-input>
+  </ion-item>
+  <button ion-button color="secondary" (click)="createList();">add list</button>
+</ion-list>
+
 </ion-content>
