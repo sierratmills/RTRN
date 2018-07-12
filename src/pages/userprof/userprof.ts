@@ -19,10 +19,10 @@ import { Http } from '@angular/http';
 })
 export class UserprofPage {
 
-  public firstname: String;
-  public lastname: String;
-  public email: String;
-  public username: String;
+  public firstname = '';
+  public lastname= '';
+  public email= '';
+  public username= '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN")).subscribe(
@@ -32,6 +32,7 @@ export class UserprofPage {
         this.lastname = info.user.lastname;
         this.email = info.user.email;
         this.username = info.user.username;
+        console.log(info);
       },
 
       err => {

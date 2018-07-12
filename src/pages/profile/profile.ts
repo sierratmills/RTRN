@@ -31,9 +31,9 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
-  navigateToMain() {
+  navigateToProfile() {
     console.log("Navigating..");
-    this.navCtrl.push(MainPage);
+    this.navCtrl.pop();
   }
 
   ok(){
@@ -47,7 +47,7 @@ export class ProfilePage {
         .subscribe(
           result => {
             console.log(result);
-            this.navigateToMain();
+            this.navigateToProfile();
 
           },
 
