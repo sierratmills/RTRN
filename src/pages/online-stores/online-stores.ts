@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { CartPage } from '../cart/cart';
+import { OrderPage } from '../order/order';
+import { MainPage } from '../main/main';
+import { StoreSitePage } from '../store-site/store-site';
 
 /**
  * Generated class for the OnlineStoresPage page.
@@ -15,11 +19,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OnlineStoresPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OnlineStoresPage');
+  }
+
+  presentStoreModal(store: StoreSitePage) {
+    let profileModal = this.modalCtrl.create(StoreSitePage, { storeParameter: store, userId: 8675309 });
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    profileModal.present();
+  }
+
+  navigateToCart() {
+    this.navCtrl.push(CartPage);
+  }
+
+  goToPlaceOrder() {
+    this.navCtrl.push(OrderPage);
+  }
+
+  navigateToMain() {
+    this.navCtrl.push(MainPage);
   }
 
 }

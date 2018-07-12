@@ -9,6 +9,8 @@ import { CartPage } from '../cart/cart';
 import { HomePage } from '../home/home';
 import { MainPage } from '../main/main';
 import { Http } from '@angular/http';
+import { Order } from '../../models/order';
+import { OrderPage } from '../order/order';
 
 /**
  * Generated class for the SearchResultsPage page.
@@ -57,6 +59,10 @@ export class SearchResultsPage {
 
   navigateToMain() {
     this.navCtrl.push(MainPage);
+  }
+
+  goToPlaceOrder() {
+    this.navCtrl.push(OrderPage);
   }
 
   getStores(){

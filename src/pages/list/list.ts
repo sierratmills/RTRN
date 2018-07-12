@@ -14,6 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'list.html',
 })
 export class ListPage {
+  public listname= '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

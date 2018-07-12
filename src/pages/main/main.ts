@@ -6,6 +6,10 @@ import { ShopPage } from '../shop/shop';
 import { MapPage } from '../map/map';
 import { CartPage } from '../cart/cart';
 import { FavoritesPage } from '../favorites/favorites';
+import { OnlineStoresPage } from '../online-stores/online-stores';
+import { OrderhistoryPage } from '../orderhistory/orderhistory';
+import { ListPage } from '../list/list';
+import { UserListsPage } from '../user-lists/user-lists';
 
 /**
  * Generated class for the MainPage page.
@@ -52,9 +56,22 @@ export class MainPage {
     this.navCtrl.push(ShopPage);
   }
 
+  navigateToLists() {
+    this.navCtrl.push(UserListsPage);
+  }
+
+  navigateToHistory() {
+    this.navCtrl.push(OrderhistoryPage);
+  }
+
   navigateToUserProfile() {
     console.log("Navigating..");
     this.navCtrl.push(UserprofPage);
+  }
+
+  navigateToOnlineShops() {
+    console.log("Navigating..");
+    this.navCtrl.push(OnlineStoresPage);
   }
 
   ionViewDidLoad() {

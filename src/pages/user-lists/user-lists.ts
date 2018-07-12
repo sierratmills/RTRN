@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ListPage } from '../list/list';
 
 /**
  * Generated class for the UserListsPage page.
@@ -22,4 +23,7 @@ export class UserListsPage {
     console.log('ionViewDidLoad UserListsPage');
   }
 
+  goToList() {
+    this.navCtrl.push(ListPage);
+  }
 }

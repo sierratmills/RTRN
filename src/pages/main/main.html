@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content padding class="main">
-  <button ion-button large full color="secondary" (click)="navigateToShopPage()">SHOP</button>
+  <button ion-button large full color="secondary" class="map" (click)="navigateToShopPage()">SHOP</button>
 <div class="slide">
   <ion-slides shouldLockSwipes=false color="primary" item-width="100%" item-height="66%">
     <ion-slide>
@@ -27,15 +27,15 @@
       </ion-list>
     </ion-slide>
     <ion-slide>
-      <button ion-button class="buttons" medium color="magenta">Shopping Lists</button>
+      <button ion-button class="buttons" medium (click)="navigateToLists()" color="magenta">Shopping Lists</button>
       <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/list.jpg"></ion-img>
     </ion-slide>
     <ion-slide>
-      <button ion-button class="buttons" medium color="magenta">Order History</button>
+      <button ion-button class="buttons" medium (click)="navigateToHistory()" color="magenta">Order History</button>
         <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/packages.jpg"></ion-img>
     </ion-slide>
     <ion-slide>
-        <button ion-button class="buttons" medium color="magenta">Online Shops</button>
+        <button ion-button class="buttons" medium (click)="navigateToOnlineShops()" color="magenta">Online Shops</button>
         <ion-img style="width: 100%; height: 450px;" src="../../assets/imgs/online.jpg"></ion-img>
       </ion-slide>
   </ion-slides>
