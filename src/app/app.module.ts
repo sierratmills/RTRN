@@ -22,6 +22,7 @@ import { ProductService } from '../services/product.service';
 import { CartPage } from '../pages/cart/cart';
 
 import { FormsModule } from '@angular/forms'
+import { PaymentPage } from '../pages/payment/payment';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FormsModule } from '@angular/forms'
     MapPage,
     SearchResultsPage,
     StoreSitePage,
-    CartPage
+    CartPage,
+    PaymentPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { FormsModule } from '@angular/forms'
     MapPage,
     SearchResultsPage,
     StoreSitePage,
-    CartPage
+    CartPage,
+    PaymentPage
   ],
   providers: [
     StatusBar,

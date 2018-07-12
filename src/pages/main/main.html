@@ -5,7 +5,7 @@
       <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
       </ion-searchbar>
       <button ion-button small clear=false color="secondary" (click)="navigateToUserProfile()">Profile</button>
-      <button ion-button small clear=true color="secondary" (click)="navigateToHomePage()">Log out</button>
+      <button ion-button small clear=true color="secondary" (click)="logOut()">Log out</button>
       <ion-list>
           <button ion-button icon-only (click)="navigateToShoppingCart()">
               <ion-icon medium color="magenta" name="cart"></ion-icon>
