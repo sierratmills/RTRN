@@ -21,8 +21,13 @@
     <ion-img class="picture" src="../../assets/imgs/pictureholder.png"></ion-img>
     <ion-list class="info">
         <ion-item>
-            <ion-label stacked>Name</ion-label>
-            <ion-title type="User's Full Name">{{currUser?.fullname}}</ion-title>
+            <ion-label stacked>First Name</ion-label>
+            <ion-title type="User's Full Name">{{currUser?.firstname}}</ion-title>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Last Name</ion-label>
+            <ion-title type="User's Full Name">{{currUser?.lastname}}</ion-title>
         </ion-item>
 
         <ion-item>
@@ -31,14 +36,10 @@
         </ion-item>
 
         <ion-item>
-            <ion-label stacked>Default Location</ion-label>
-            <ion-title type="User's Zip Code">{{currUser?.zipcode}}</ion-title>
+            <ion-label stacked>Email</ion-label>
+            <ion-title type="User's Full Name">{{currUser?.email}}</ion-title>
         </ion-item>
 
-        <ion-item>
-            <ion-label stacked>Payment Method</ion-label>
-            <ion-title type="User's Zip Code">{{currUser?.paymenttype}}</ion-title>
-        </ion-item>
 
     <button ion-button small color="magenta">Change Password</button>
     <button ion-button small color="magenta" (click)="navigateToProfile()">Edit Profile</button>
