@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { Http } from '@angular/http';
+import { MainPage } from '../main/main';
 
 /**
  * Generated class for the UserListsPage page.
@@ -55,6 +56,10 @@ export class UserListsPage {
           }
         );
     }
+
+  navigateToMain() {
+    this.navCtrl.push(MainPage);
+  }
 
   goToList() {
     this.navCtrl.push(ListPage);
