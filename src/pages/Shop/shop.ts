@@ -18,15 +18,18 @@ import { StoreSitePage } from '../store-site/store-site';
 export class ShopPage {
 
   public results: Array<StoreSitePage>;
-  public storetype: String;
-  public location: String;
+  public storetype = "";
+  public location = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   navigateToSearchResults() {
     console.log("Navigating..");
-    this.navCtrl.push(SearchResultsPage);
+    this.navCtrl.push(SearchResultsPage, {
+      category: this.storetype,
+      zipcode: this.location
+    });
   }
 
   ionViewDidLoad() {
