@@ -16,10 +16,6 @@ export class LoginPage {
 
   public password = '';
 
-  public complexObject: any;
-
-  public flag: boolean = true;
-
   constructor(public navCtrl: NavController, public toastCtrl:ToastController, private http: Http) { 
 
   }

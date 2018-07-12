@@ -18,30 +18,30 @@
       
         <ion-item>
             <ion-label color="secondary" stacked>First Name</ion-label>
-            <ion-input type="name" placeholder="First Name"></ion-input>
+            <ion-input type="name" [(ngModel)]="firstname" name="firstname" placeholder="First Name"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label color="secondary" stacked>Last Name</ion-label>
-            <ion-input type="name" placeholder="Last Name"></ion-input>
+            <ion-input type="name" [(ngModel)]="lastname" name="lastname" placeholder="Last Name"></ion-input>
           </ion-item>
       
           <ion-item>
             <ion-label color="secondary" stacked>Username</ion-label>
-            <ion-input type="username" placeholder="Username Input"></ion-input>
+            <ion-input type="username" [(ngModel)]="username" name="username" placeholder="Username Input"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label color="secondary" stacked>Email</ion-label>
-            <ion-input type="username" placeholder="Email Input"></ion-input>
+            <ion-input type="username" [(ngModel)]="email" name="email" placeholder="Email Input"></ion-input>
           </ion-item>
 
           <ion-item>
               <ion-label color="secondary" stacked>Payment Method</ion-label>
-              <ion-input type="username" placeholder=""></ion-input>
+              <ion-input type="payment" placeholder=""></ion-input>
           </ion-item>
 
       </ion-list>
-      <button ion-button color="secondary" (click)="navigateToMain()"> Continue</button>
+      <button ion-button color="secondary" (click)="ok()"> Continue</button>
 
 </ion-content>
