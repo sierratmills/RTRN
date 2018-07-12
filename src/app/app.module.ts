@@ -23,6 +23,7 @@ import { CartPage } from '../pages/cart/cart';
 
 import { FormsModule } from '@angular/forms'
 import { PaymentPage } from '../pages/payment/payment';
+import { FavoritesPage } from '../pages/favorites/favorites';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PaymentPage } from '../pages/payment/payment';
     SearchResultsPage,
     StoreSitePage,
     CartPage,
-    PaymentPage
+    PaymentPage,
+    FavoritesPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { PaymentPage } from '../pages/payment/payment';
     SearchResultsPage,
     StoreSitePage,
     CartPage,
-    PaymentPage
+    PaymentPage,
+    FavoritesPage
   ],
   providers: [
     StatusBar,
