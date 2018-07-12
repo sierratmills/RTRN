@@ -8,6 +8,7 @@ import { MapPage } from '../map/map';
 import { CartPage } from '../cart/cart';
 import { HomePage } from '../home/home';
 import { MainPage } from '../main/main';
+import { Http } from '@angular/http';
 
 /**
  * Generated class for the SearchResultsPage page.
@@ -28,7 +29,7 @@ export class SearchResultsPage {
   public category: String; 
   public categoryUppercase: String;
 
-  constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController) {
+  constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController, public http: Http) {
     this.zip = navParams.get('zipcode');
     this.category = navParams.get('category');
     this.categoryUppercase = navParams.get('category').toUpperCase();
@@ -59,6 +60,23 @@ export class SearchResultsPage {
   }
 
   getStores(){
+    this.http
+      .post("http://localhost:3000/store", {
+        category: this.category,
+        zipcode: this.zip
+      })
+      .subscribe(
+        result => {
+          
+        },
+
+        err => {
+          console.log(err);
+        }
+      );    
+  }
+
+  displayStores(){
 
   }
 
