@@ -24,12 +24,16 @@ import { MainPage } from '../main/main';
 export class SearchResultsPage {
 
   public stores: Array<Store>;
+  public zip: String;
+  public category: String; 
+  public categoryUppercase: String;
 
-  constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController, 
-    ) {
-    
+  constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController) {
+    this.zip = navParams.get('zipcode');
+    this.category = navParams.get('category');
+    this.categoryUppercase = navParams.get('category').toUpperCase();
   }
- 
+
   presentStoreModal(store: StoreSitePage) {
     let profileModal = this.modalCtrl.create(StoreSitePage, { storeParameter: store, userId: 8675309 });
     profileModal.onDidDismiss(data => {
@@ -37,22 +41,26 @@ export class SearchResultsPage {
     });
     profileModal.present();
   }
- 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchResultsPage');
   }
 
-  goToMap(){
-    this.navCtrl.push(MapPage);
-  }
+  goToMap() {
+        this.navCtrl.push(MapPage);
+  }
 
-  navigateToCart(){
-    this.navCtrl.push(CartPage);
-  }
+  navigateToCart() {
+        this.navCtrl.push(CartPage);
+  }
 
-navigateToMain(){
-      this.navCtrl.push(MainPage);
-    }
+  navigateToMain() {
+    this.navCtrl.push(MainPage);
+  }
+
+  getStores(){
+
+  }
 
 
 }

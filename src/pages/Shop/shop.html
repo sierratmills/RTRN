@@ -17,22 +17,23 @@
   <ion-list>
     <ion-item>
         <ion-label color="magenta" stacked>Enter your location</ion-label>
-        <ion-input type="zip" placeholder="Zip Code"></ion-input>
+        <ion-input type="zip" [(ngModel)]="location" name="location" placeholder="Zip Code"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="magenta" stacked>Choose a shopping category</ion-label>
 
         <ion-label>Category</ion-label>
-        <ion-select [(ngModel)]="Category">
-          <ion-option value="c">Clothes</ion-option>
-          <ion-option value="f">Furniture</ion-option>
-          <ion-option value="e">Electronics</ion-option>
-          <ion-option value="j">Jewelry</ion-option>
-          <ion-option value="s">Shoes</ion-option>
-          <ion-option value="m">Movies and Entertainment</ion-option>
-          <ion-option value="b">Books</ion-option>
-          <ion-option value="o">Other</ion-option>
+        <ion-select [(ngModel)]="storetype" name="storetype">
+          <ion-option value="any"> Any </ion-option>
+          <ion-option value="clothes">Clothes</ion-option>
+          <ion-option value="furniture">Furniture</ion-option>
+          <ion-option value="electronics">Electronics</ion-option>
+          <ion-option value="jewelry">Jewelry</ion-option>
+          <ion-option value="shoes">Shoes</ion-option>
+          <ion-option value="movies and entertainment">Movies and Entertainment</ion-option>
+          <ion-option value="books">Books</ion-option>
+          <ion-option value="other">Other</ion-option>
         </ion-select>
     </ion-item>
   </ion-list>
