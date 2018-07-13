@@ -21,6 +21,11 @@
             <ion-input type="store" [(ngModel)]="storename" name="storename" placeholder="Store"></ion-input>
           </ion-item>
 
+          <ion-item>
+            <ion-label color="secondary" stacked>Order total</ion-label>
+            <ion-input type="price" [(ngModel)]="pricetotal" name="price" placeholder="Order price"></ion-input>
+          </ion-item>
+
           <ion-item *ngFor="let input of inputs">
             <ion-label color="secondary" stacked>{{input.label}}</ion-label>
             <ion-input type="item" [(ngModel)]="input.value" name="items" placeholder="Item"></ion-input>

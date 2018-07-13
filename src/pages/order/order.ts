@@ -20,6 +20,8 @@ export class OrderPage {
   public storename = '';
   public date = '';
   private id = '';
+  public pricetotal = '';
+  public itemname = '';
 
   public inputs = [
     { 
@@ -50,6 +52,7 @@ export class OrderPage {
       label: 'Item ' + this.num,
       value: '',
     });
+   // this.createItem();
   }
 
   createOrder() {
@@ -58,6 +61,7 @@ export class OrderPage {
           store: this.storename,
           date: this.date,
           userid: this.id,
+          price: this.pricetotal,
         }).subscribe(
           result => {
             console.log(result);
@@ -69,6 +73,25 @@ export class OrderPage {
           }
         );
     }
+
+  /*createItem() {
+    this.http
+        .post("http://localhost:3000/createitem", {
+          store: this.storename,
+          date: this.date,
+          userid: this.id,
+          price: this.pricetotal,
+        }).subscribe(
+          result => {
+            console.log(result);
+
+          },
+
+          err => {
+            console.log(err);
+          }
+        );
+  }*/
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
