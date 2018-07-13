@@ -24,6 +24,12 @@ import { CartPage } from '../pages/cart/cart';
 import { FormsModule } from '@angular/forms'
 import { PaymentPage } from '../pages/payment/payment';
 import { FavoritesPage } from '../pages/favorites/favorites';
+import { ListPage } from '../pages/list/list';
+import { Order } from '../models/order';
+import { OrderhistoryPage } from '../pages/orderhistory/orderhistory';
+import { OrderPage } from '../pages/order/order';
+import { OnlineStoresPage } from '../pages/online-stores/online-stores';
+import { UserListsPage } from '../pages/user-lists/user-lists';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,12 @@ import { FavoritesPage } from '../pages/favorites/favorites';
     StoreSitePage,
     CartPage,
     PaymentPage,
-    FavoritesPage
+    FavoritesPage,
+    ListPage,
+    OrderhistoryPage,
+    OrderPage,
+    OnlineStoresPage,
+    UserListsPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +75,12 @@ import { FavoritesPage } from '../pages/favorites/favorites';
     StoreSitePage,
     CartPage,
     PaymentPage,
-    FavoritesPage
+    FavoritesPage,
+    ListPage,
+    OrderhistoryPage,
+    OrderPage,
+    OnlineStoresPage,
+    UserListsPage
   ],
   providers: [
     StatusBar,

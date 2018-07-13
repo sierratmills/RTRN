@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { MapPage } from '../map/map';
 import { CartPage } from '../cart/cart';
+import { OrderPage } from '../order/order';
 import { MainPage } from '../main/main';
 import { StoreSitePage } from '../store-site/store-site';
-import { OrderPage } from '../order/order';
 
 /**
- * Generated class for the FavoritesPage page.
+ * Generated class for the OnlineStoresPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -15,17 +14,16 @@ import { OrderPage } from '../order/order';
 
 @IonicPage()
 @Component({
-  selector: 'page-favorites',
-  templateUrl: 'favorites.html',
+  selector: 'page-online-stores',
+  templateUrl: 'online-stores.html',
 })
-export class FavoritesPage {
-  [x: string]: any;
+export class OnlineStoresPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
+    console.log('ionViewDidLoad OnlineStoresPage');
   }
 
   presentStoreModal(store: StoreSitePage) {
@@ -34,10 +32,6 @@ export class FavoritesPage {
       console.log(data);
     });
     profileModal.present();
-  }
-
-  goToMap() {
-    this.navCtrl.push(MapPage);
   }
 
   navigateToCart() {
