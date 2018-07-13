@@ -61,34 +61,10 @@ export class SearchResultsPage {
     this.navCtrl.push(MainPage);
   }
 
-<<<<<<< HEAD
-=======
   goToPlaceOrder() {
     this.navCtrl.push(OrderPage);
   }
 
-  getStores(){
-    this.http
-      .post("http://localhost:3000/store", {
-        category: this.category,
-        zipcode: this.zip
-      })
-      .subscribe(
-        result => {
-          
-        },
-
-        err => {
-          console.log(err);
-        }
-      );    
-  }
-
-  displayStores(){
-
-  }
-
->>>>>>> d98d175b60c83ba1b261fbd01e46ece001dcc4b2
 
 }
 

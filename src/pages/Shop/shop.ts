@@ -68,7 +68,7 @@ export class ShopPage {
           lng = info.results[0].geometry.location.lng;
           console.log(lat);
           console.log(lng);
-          this.makeStores(lat, lng);
+          //this.makeStores(lat, lng);
         },
 
         (err: any) => {
@@ -76,7 +76,7 @@ export class ShopPage {
         }
       );
 
-
+      this.navigateToSearchResults();
   }
 
 
