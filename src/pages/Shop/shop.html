@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item>
         <ion-label color="magenta" stacked>Enter your location</ion-label>
-        <ion-input type="zip" [(ngModel)]="location" name="location" placeholder="Zip Code"></ion-input>
+        <ion-input id="location" [(ngModel)]="location" name="location" placeholder="Zip Code"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -31,11 +31,10 @@
           <ion-option value="electronics">Electronics</ion-option>
           <ion-option value="jewelry">Jewelry</ion-option>
           <ion-option value="shoes">Shoes</ion-option>
-          <ion-option value="movies and entertainment">Movies and Entertainment</ion-option>
+          <ion-option value="flowers">Flowers</ion-option>
           <ion-option value="books">Books</ion-option>
-          <ion-option value="other">Other</ion-option>
         </ion-select>
     </ion-item>
   </ion-list>
-  <button ion-button color="secondary" (click)="navigateToSearchResults()">SEARCH</button>
+  <button ion-button color="secondary" (click)="getStores()">SEARCH</button>
 </ion-content>

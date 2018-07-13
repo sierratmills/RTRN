@@ -65,27 +65,6 @@ export class SearchResultsPage {
     this.navCtrl.push(OrderPage);
   }
 
-  getStores(){
-    this.http
-      .post("http://localhost:3000/store", {
-        category: this.category,
-        zipcode: this.zip
-      })
-      .subscribe(
-        result => {
-          
-        },
-
-        err => {
-          console.log(err);
-        }
-      );    
-  }
-
-  displayStores(){
-
-  }
-
 
 }
 
