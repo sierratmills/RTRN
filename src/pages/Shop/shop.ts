@@ -135,9 +135,8 @@ export class ShopPage {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         this.addresses[i] = place.formatted_address;
         this.urls[i] = place.website;
-        //console.log(place.website);
+        this.addStores(i);
       }
-      this.addStores(i);
     }, (error: any) => {
       console.log(error);
     });
