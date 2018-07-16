@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Store } from '../../models/store';
-import { SearchResultsPage } from '../Search-results/search-results';
+import { SearchResultsPage } from '../search-results/search-results';
 
 
 /**

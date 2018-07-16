@@ -24,17 +24,14 @@
 <ion-content padding class="orders">
 
   <ion-list>
-
-    <ion-item>
-      <ion-list>
-
-        <h2 ion-content style="font-size: 1.5 em">{{orderstore}}</h2>
-        <h3 style="font-size: 1 em">Jacket</h3>
-        <h4 ion-content style="font-size: 1 em">{{orderdate}}</h4>
-
-        <button ion-button small class="return" color="secondary" (click)="goToMap()">View return policy</button>
-      </ion-list>
-    </ion-item>
+      <ion-item *ngFor="let item of orders">
+        <ion-list>
+          <h2 ion-content style="font-size: 1.5 em">{{item.store}}</h2>
+          <h3 ion-content style="font-size: 1 em">{{item.price}}</h3>
+          <h4 ion-content style="font-size: 1 em">{{item.date}}</h4>
+        </ion-list>
+        <button ion-button small class="return" color="secondary">View return policy</button>
+      </ion-item>
 
   </ion-list>
 </ion-content>

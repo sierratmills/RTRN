@@ -16,7 +16,7 @@ import { ShopPage } from '../pages/shop/shop';
 import { MapPage } from '../pages/map/map';
 
 import { ComponentsModule } from '../components/components.module';
-import { SearchResultsPage} from '../pages/Search-results/search-results';
+import { SearchResultsPage} from '../pages/search-results/search-results';
 import { StoreSitePage } from '../pages/store-site/store-site';
 import { ProductService } from '../services/product.service';
 import { CartPage } from '../pages/cart/cart';

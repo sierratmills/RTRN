@@ -18,14 +18,14 @@ import { MainPage } from '../main/main';
 export class OrderhistoryPage {
 
   public userid;
-  public orderstore;
-  public orderdate;
+  public orderid;
+  public orders = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
     this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN")).subscribe(
       result => {
         var info = result.json();
-        this.userid = info.userid;
+        this.userid = info.user.id;
         console.log(info);
       },
 
@@ -37,14 +37,17 @@ export class OrderhistoryPage {
     this.http.get("http://localhost:3000/orderhistory", this.userid).subscribe(
       result => {
         var info = result.json();
-        this.orderdate = info.date;
-        this.orderstore = info.store;
+        this.orders = info;
+        console.log(info);
+      //  this.orderdate = info.date;
+      //  this.orderstore = info.store;
       },
 
       err => {
         // Invalid, login!
       }
     );
+
   }
 
   navigateToMain() {
