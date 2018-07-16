@@ -26,7 +26,7 @@
         <ion-label>Category</ion-label>
         <ion-select [(ngModel)]="storetype" name="storetype">
           <ion-option value="any"> Any </ion-option>
-          <ion-option value="clothes">Clothes</ion-option>
+          <ion-option value="clothing">Clothes</ion-option>
           <ion-option value="furniture">Furniture</ion-option>
           <ion-option value="electronics">Electronics</ion-option>
           <ion-option value="jewelry">Jewelry</ion-option>
@@ -36,5 +36,6 @@
         </ion-select>
     </ion-item>
   </ion-list>
+  <div id='map'>maps error</div>
   <button ion-button color="secondary" (click)="getStores()">SEARCH</button>
 </ion-content>

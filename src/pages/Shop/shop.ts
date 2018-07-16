@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, getModuleFactory, ViewChild, ElementRef  } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchResultsPage } from '../Search-results/search-results';
-import { StoreSitePage } from '../store-site/store-site';
 import { Http } from '@angular/http';
+import { Store } from '../../models/store';
 
-
+declare var google;
+let map: any;
+let infowindow: any;
+let options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
 /**
  * Generated class for the ShopPage page.
  *
@@ -18,12 +25,13 @@ import { Http } from '@angular/http';
   templateUrl: 'shop.html',
 })
 export class ShopPage {
-
-  public results: Array<StoreSitePage>;
+  @ViewChild('map') mapElement: ElementRef;
+  public stores: Array<Store>;
   public storetype = "";
   public location = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    
   }
 
   navigateToSearchResults() {
@@ -36,22 +44,22 @@ export class ShopPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopPage');
-  }
+  } 
 
-  getStoreType(){
-    if (this.storetype == "clothing"){
+  getStoreType() {
+    if (this.storetype == "clothing") {
       this.storetype = "clothing_store";
-    }else if (this.storetype == "furniture"){
+    } else if (this.storetype == "furniture") {
       this.storetype = "furniture_store";
-    }else if (this.storetype == "electronics"){
+    } else if (this.storetype == "electronics") {
       this.storetype = "electronics_store";
-    }else if (this.storetype == "jewelry"){
+    } else if (this.storetype == "jewelry") {
       this.storetype = "jewelry_store";
-    }else if (this.storetype == "shoes"){
+    } else if (this.storetype == "shoes") {
       this.storetype = "shoe_store";
-    }else if (this.storetype == "flowers"){
+    } else if (this.storetype == "flowers") {
       this.storetype = "florist";
-    }else if (this.storetype == "books"){
+    } else if (this.storetype == "books") {
       this.storetype = "book_store";
     }
   }
@@ -59,7 +67,7 @@ export class ShopPage {
   getStores() {
     var lat = '';
     var lng = '';
-    console.log(this.location);
+    this.getStoreType();
     this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + this.location + "&key=AIzaSyDVAhL7WN1tys50EdRMj7vnOiIsfpBOImY")
       .subscribe(
         (data: any) => {
@@ -68,7 +76,7 @@ export class ShopPage {
           lng = info.results[0].geometry.location.lng;
           console.log(lat);
           console.log(lng);
-          //this.makeStores(lat, lng);
+          this.searchForStore(lat, lng);
         },
 
         (err: any) => {
@@ -76,38 +84,51 @@ export class ShopPage {
         }
       );
 
-      this.navigateToSearchResults();
+    //this.navigateToSearchResults();
   }
 
-
-
-  makeStores(lat: String, lng: String) {
-    this.getStoreType();
-    if (this.storetype != '' && this.storetype != "any") {
-      this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=15000&type=" + this.storetype + "&key=AIzaSyDVAhL7WN1tys50EdRMj7vnOiIsfpBOImY")
-        .subscribe(
-          (data: any) => {
-            var info = data.json();
-            console.log(info);
-          },
-
-          (err: any) => {
-            console.log(err);
-          }
-        );
-    } else {
-      this.http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lng + "&radius=15000&type=store&key=AIzaSyDVAhL7WN1tys50EdRMj7vnOiIsfpBOImY")
-        .subscribe(
-          (data: any) => {
-            var info = data.json();
-            console.log(info);
-          },
-
-          (err: any) => {
-            console.log(err);
-          }
-        );
-    }
+  searchForStore(latit: String, lngit: String) {
+    var storeResults = [];
+    console.log("here 1")
+    var latlng = new google.maps.LatLng(latit, lngit);
+    console.log("here 2");
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: latlng,
+      zoom: 12
+    });
+    console.log("here 3");
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+      location: { lat: latit, lng: lngit },
+      radius: 15000,
+      type: [this.storetype]
+    }, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log("here 4");
+        for (var i = 0; i < results.length; i++) {
+          var name = results[i].name;
+          var lat = results[i].geometry.location.lat;
+          var lng = results[i].geometry.location.lng;
+          var id = results[i].id;
+          var address;
+          var url;
+          service.getDetails({
+            placeId: id
+          }, function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              address = place.formatted_address;
+              url = place.website;
+            }
+          });
+          var store = new Store(name, this.storetype, address, url, lat, lng);
+          storeResults[i] = store; 
+          console.log(store);
+        }
+      }
+    }, (error: any) => {
+      console.log(error);
+    }, true);
   }
 
 }
+

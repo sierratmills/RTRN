@@ -6,29 +6,20 @@ export class Store {
         private address: String;
         private URL: String;
         private lat: String;
-        private long: String;
+        private lng: String;
         private products: Array<Item>;
     
-        constructor(public store: String, private type: String, public ad: String, public url: String) {
+        constructor(public store: String, private type: String, public ad: String, public url: String, public lt: String, public lg: String) {
             this.storename = store;
             this.storetype = type;
             this.address = ad;
             this.URL = url;
-            this.lat = '';
-            this.long = '';
-            this.setLatLongFromAddress();
+            this.lat = lt;
+            this.lng = lg;
         }
     
         setProducts() {
             //get products from web and create product objects
-        }
-    
-        makeProductObj(): Item {
-            return null;
-        }
-    
-        setLatLongFromAddress() {
-    
         }
     
         getStorename(): String {
@@ -52,7 +43,7 @@ export class Store {
         }
     
         getlong(): String {
-            return this.long;
+            return this.lng;
         }
     
         getproducts(): Array<Item> {

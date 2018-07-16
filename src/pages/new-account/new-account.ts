@@ -38,7 +38,6 @@ export class NewAccountPage {
     if (!this.goodPassword) {
       badpassword=true;
       console.log("bad password");
-      return;
     }
     else {
       this.http

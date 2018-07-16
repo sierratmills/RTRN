@@ -2,4 +2,9 @@ page-shop {
     .shop{
         background-color: map-get($colors, palepink)
     }
+    
+    #map {
+        height: 0%;
+    }
+      
 }
