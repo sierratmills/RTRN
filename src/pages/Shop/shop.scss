@@ -2,13 +2,6 @@ page-shop {
     .shop{
         background-color: map-get($colors, palepink)
     }
-<<<<<<< HEAD
-    
-    #map {
-        height: 0%;
-    }
-      
-=======
 
     .logo{
         position: absolute;
@@ -37,5 +30,4 @@ page-shop {
         border-width: 4px;
         border-color: map-get($colors, secondary);
     }
->>>>>>> 008700553897bd99753b032aec3ba1ece05896c8
 }
