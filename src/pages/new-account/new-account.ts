@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { MainPage } from '../main/main';
 import { Http } from "../../../node_modules/@angular/http";
+import { LoginPage } from '../login/login';
 
 
 /**
@@ -59,7 +59,7 @@ export class NewAccountPage {
 
             let t = localStorage.getItem("TOKEN");
 
-            this.navigateToMain();
+            this.navigateToLogin();
 
           },
 
@@ -113,9 +113,9 @@ export class NewAccountPage {
     }
   }
 
-  navigateToMain() {
+  navigateToLogin() {
     console.log("Navigating..");
-    this.navCtrl.push(MainPage);
+    this.navCtrl.push(LoginPage);
   }
 
   showToastBadPassword() {
@@ -162,7 +162,7 @@ export class NewAccountPage {
     });
     toast.present().then(() => {
       toast.onDidDismiss(() => {
-        this.navigateToMain();
+        this.navigateToLogin();
       });
     });
   }

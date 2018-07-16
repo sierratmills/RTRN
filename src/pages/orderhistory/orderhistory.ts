@@ -18,7 +18,6 @@ import { MainPage } from '../main/main';
 export class OrderhistoryPage {
 
   public userid;
-  private order;
   public orderstore;
   public orderdate;
 
@@ -34,13 +33,12 @@ export class OrderhistoryPage {
         // Invalid, login!
       }
     );
+    
     this.http.get("http://localhost:3000/orderhistory", this.userid).subscribe(
       result => {
         var info = result.json();
-        this.order = info.order;
         this.orderdate = info.date;
         this.orderstore = info.store;
-        console.log(this.order);
       },
 
       err => {

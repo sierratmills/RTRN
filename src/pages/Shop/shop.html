@@ -14,7 +14,10 @@
 
 
 <ion-content padding class="shop">
-  <ion-list>
+    <ion-title text-center class="logo">
+        <ion-img class="picture" style="width: 150px; height: 150px;" align="center" src="../../assets/imgs/logo-rtrn.png"></ion-img>
+      </ion-title>
+  <ion-list class="criteria">
     <ion-item>
         <ion-label color="magenta" stacked>Enter your location</ion-label>
         <ion-input id="location" [(ngModel)]="location" name="location" placeholder="Zip Code"></ion-input>
@@ -36,6 +39,10 @@
         </ion-select>
     </ion-item>
   </ion-list>
+<<<<<<< HEAD
   <div id='map'>maps error</div>
   <button ion-button color="secondary" (click)="getStores()">SEARCH</button>
+=======
+  <button ion-button color="secondary" large round class="button" (click)="getStores()">SEARCH</button>
+>>>>>>> 008700553897bd99753b032aec3ba1ece05896c8
 </ion-content>

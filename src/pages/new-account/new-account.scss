@@ -6,8 +6,8 @@ page-new-account {
     .picture{
         z-index: 2;
         position: absolute;
-        right: 4%;
-        top: 2.5%;
+        left: 28%;
+        top: 4%;
         margin: auto;
         width: 40%; 
         height: 150px;
@@ -16,8 +16,12 @@ page-new-account {
         border-color: map-get($colors, magenta);
     }
 
-    .name{
-        width: 60%;
+    .info{
+        position: absolute;
+        left: 7%;
+        top: 30%;
+        width: 85%;
+        margin: auto;
     }
 
     .add{
@@ -31,11 +35,12 @@ page-new-account {
     .cambutton{
         z-index: 2;
         position: absolute;
-        top: 7%;
-        right: 11%;
+        top: 10%;
+        left: 37%;
         margin: auto;
         width: 100px; 
         height: 90px;
         border-width: 20px;
     }
+
 }
