@@ -1,6 +1,6 @@
 import { Component, getModuleFactory, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SearchResultsPage } from '../Search-results/search-results';
+import { SearchResultsPage } from '../search-results/search-results';
 import { Http } from '@angular/http';
 import { Store } from '../../models/store';
 import { PartialStore } from '../../models/partialStore';
