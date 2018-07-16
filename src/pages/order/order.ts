@@ -64,8 +64,9 @@ export class OrderPage {
           price: this.pricetotal,
         }).subscribe(
           result => {
+            var info = result.json();
+            this.id = info.orderid;
             console.log(result);
-
           },
 
           err => {
@@ -74,24 +75,22 @@ export class OrderPage {
         );
     }
 
-  /*createItem() {
+  createItem(name: string) {
     this.http
         .post("http://localhost:3000/createitem", {
-          store: this.storename,
-          date: this.date,
-          userid: this.id,
-          price: this.pricetotal,
+          storename: this.storename,
+          itemname: name,
+          orderid: this.id,
         }).subscribe(
           result => {
             console.log(result);
-
           },
 
           err => {
             console.log(err);
           }
         );
-  }*/
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');

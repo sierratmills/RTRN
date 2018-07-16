@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding class="login">
-  <ion-list>
+  <ion-list class="info">
     <ion-item>
       <ion-label color="magenta" stacked>Email</ion-label>
       <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email Input"></ion-input>
@@ -16,9 +16,19 @@
       <ion-label color="magenta" stacked>Password</ion-label>
       <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password Input"></ion-input>
     </ion-item>
-    <button ion-button color="secondary" (click)="login()">LOGIN</button>
-    <button ion-button small clear=true color="magenta" >Forgot password?</button>
   </ion-list>
-  Don't have an account? 
-  <button ion-button small clear=true color="magenta" (click)="navigateToNewAccount()">Create Account</button>
+  <ion-item class="account">
+    Don't have an account?
+    <button ion-button small clear=true color="magenta" (click)="navigateToNewAccount()">Create Account</button>
+  </ion-item>
+  <ion-title text-center class="logo">
+    <ion-img class="picture" style="width: 150px; height: 150px;" align="center" src="../../assets/imgs/logo-rtrn.png"></ion-img>
+  </ion-title>
+  <ion-title text-center class="buttons">
+    <ion-list>
+      <button ion-button large color="secondary" round (click)="login()">LOGIN</button>
+      
+    </ion-list>
+    <button ion-button small clear=true color="magenta">Forgot password?</button>
+  </ion-title>
 </ion-content>

@@ -41,6 +41,10 @@ export class UserprofPage {
     );
   }
 
+  logOut() {
+    this.navCtrl.setRoot(HomePage);
+  }
+
   navigateToProfile() {
     console.log("Navigating..");
     this.navCtrl.push(ProfilePage);

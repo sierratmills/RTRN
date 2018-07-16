@@ -55,6 +55,7 @@ export class UserListsPage {
             console.log(err);
           }
         );
+        this.navigateToMain();
     }
 
   navigateToMain() {
