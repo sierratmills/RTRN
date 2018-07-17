@@ -94,7 +94,7 @@ export class ShopPage {
           console.log(err);
         }
       );
-     //setTimeout(function() {this.navigateToSearchResults(); }, 15000);
+     setTimeout(() => {this.navigateToSearchResults(); }, 15000);
   }
 
   searchForStore(latit: String, lngit: String) {
