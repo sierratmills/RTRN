@@ -147,10 +147,28 @@ export class ShopPage {
   }
 
 
-addStores(index: number) {
-  var store = new Store(this.storeInfo[index].storename, this.storeInfo[index].storetype, this.addresses[index], this.urls[index], this.storeInfo[index].lat, this.storeInfo[index].lng, this.storeInfo[index].googleid);
-  this.stores[index] = store;
-  console.log(store);
-}
+  addStores(index: number) {
+    var store = new Store(this.storeInfo[index].storename, this.storeInfo[index].storetype, this.addresses[index], this.urls[index], this.storeInfo[index].lat, this.storeInfo[index].lng, this.storeInfo[index].googleid);
+    this.stores[index] = store;
+    console.log(store);
+    this.http.post("http://localhost:3000/createStore",{
+      storename: store.storename,
+      storetype: store.storetype,
+      url: store.url,
+      returnurl: "",
+      address: store.address,
+      lat: store.lat,
+      long: store.lng,
+      googleid: store.googleid
+    }).subscribe(
+      result => {
+        console.log(result);
+      },
+      err => {
+        console.log(err);
+      } 
+    );
+  }
+
 }
 
