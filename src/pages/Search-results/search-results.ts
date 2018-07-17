@@ -46,29 +46,6 @@ export class SearchResultsPage {
     this.categoryUppercase = navParams.get('category').toUpperCase();
   }
 
-  createStore() {
-    this.http
-      .post("http://localhost:3000/createStore", {
-        storename: this.storename,
-        storetype: this.storetype,
-        url: this.url,
-        returnurl: this.returnurl,
-        address: this.address,
-        lat: this.lat,
-        long: this.long,
-        googleid: this.googleid,
-      }).subscribe(
-        result => {
-          var info = result.json();
-          console.log(info);
-        },
-
-        err => {
-          console.log(err);
-        }
-      );
-  }
-
 
   presentStoreModal(store: StoreSitePage) {
     let profileModal = this.modalCtrl.create(StoreSitePage, { storeParameter: store, userId: 8675309 });
