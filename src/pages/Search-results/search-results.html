@@ -26,57 +26,16 @@
   <ion-list>
 
     <h1>{{categoryUppercase}}</h1>
-
-    <ion-item>
-      <ion-list>
-
-        <h2 style="font-size: 1.5 em">Store name</h2>
-        <h3 style="font-size: 1 em">Address</h3>
-
+    <ion-item *ngFor="let item of stores">
+        <ion-list>
+          <h2 ion-content style="font-size: 1.5 em">{{item.storename}}</h2>
+          <h3 ion-content style="font-size: 1 em">{{item.address}}</h3>
+        </ion-list>
         <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
-
         <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
-      </ion-list>
+        <button ion-button small class="return" color="secondary">View return policy</button>
     </ion-item>
 
-    <ion-item>
-
-      <ion-list>
-
-        <h2 style="font-size: 1.5 em">Store name</h2>
-        <h3 style="font-size: 1 em">Address</h3>
-
-        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
-
-        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
-      </ion-list>
-    </ion-item>
-
-    <ion-item>
-
-      <ion-list>
-
-        <h2 style="font-size: 1.5 em">Store name</h2>
-        <h3 style="font-size: 1 em">Address</h3>
-
-        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
-
-        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
-      </ion-list>
-    </ion-item>
-
-    <ion-item>
-
-      <ion-list>
-
-        <h2 style="font-size: 1.5 em">Store name</h2>
-        <h3 style="font-size: 1 em">Address</h3>
-
-        <button ion-button small class="shop" color="magenta" (click)="presentStoreModal()">shop</button>
-
-        <button ion-button small class="map" color="magenta" (click)="goToMap()">view on map</button>
-      </ion-list>
-    </ion-item>
   </ion-list>
   <button ion-button large class="logpurchase" color="secondary" (click)="goToPlaceOrder()">LOG A PURCHASE</button>
 </ion-content>
