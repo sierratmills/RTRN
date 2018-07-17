@@ -30,14 +30,6 @@ export class SearchResultsPage {
   public zip: String;
   public category: String;
   public categoryUppercase: String;
-  storename: string;
-  storetype: string;
-  url: string;
-  returnurl: string;
-  address: string
-  lat: string;
-  long: string;
-  googleid: string;
 
   constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController, public http: Http) {
     this.zip = navParams.get('zipcode');
@@ -61,7 +53,9 @@ export class SearchResultsPage {
   }
 
   goToMap() {
-    this.navCtrl.push(MapPage);
+    this.navCtrl.push(MapPage,{
+      id: "ChIJ-zqYmGihxokRVJNgk52e-MQ"
+    });
   }
 
   navigateToCart() {
