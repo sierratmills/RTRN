@@ -33,6 +33,7 @@ export class ShopPage {
   public storeInfo = [];
   public addresses = [];
   public urls = []
+  public type = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
 
@@ -54,18 +55,25 @@ export class ShopPage {
   getStoreType() {
     if (this.storetype == "clothing") {
       this.storetype = "clothing_store";
+      this.type = "clothing";
     } else if (this.storetype == "furniture") {
       this.storetype = "furniture_store";
+      this.type = "furniture";
     } else if (this.storetype == "electronics") {
       this.storetype = "electronics_store";
+      this.type = "electronics";
     } else if (this.storetype == "jewelry") {
       this.storetype = "jewelry_store";
+      this.type = "jewelry";
     } else if (this.storetype == "shoes") {
       this.storetype = "shoe_store";
+      this.type = "shoes";
     } else if (this.storetype == "flowers") {
       this.storetype = "florist";
+      this.type = "flowers";
     } else if (this.storetype == "books") {
       this.storetype = "book_store";
+      this.type = "books";
     }
   }
 
@@ -86,7 +94,7 @@ export class ShopPage {
           console.log(err);
         }
       );
-      setTimeout(this.navigateToSearchResults(), 10000);
+      setTimeout(this.navigateToSearchResults(), 15000);
   }
 
   searchForStore(latit: String, lngit: String) {
