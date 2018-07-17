@@ -44,6 +44,7 @@ export class SearchResultsPage {
     this.category = navParams.get('category');
     this.stores = navParams.get('stores');
     this.categoryUppercase = navParams.get('category').toUpperCase();
+    console.log(this.stores);
   }
 
 
