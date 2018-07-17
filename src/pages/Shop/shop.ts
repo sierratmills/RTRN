@@ -42,7 +42,7 @@ export class ShopPage {
   navigateToSearchResults() {
     console.log("Navigating..");
     this.navCtrl.push(SearchResultsPage, {
-      category: this.storetype,
+      category: this.type,
       zipcode: this.location,
       stores: this.stores
     });
