@@ -1,8 +1,9 @@
-import { Component, getModuleFactory, ViewChild, ElementRef  } from '@angular/core';
+import { Component, getModuleFactory, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchResultsPage } from '../search-results/search-results';
 import { Http } from '@angular/http';
 import { Store } from '../../models/store';
+import { PartialStore } from '../../models/partialStore';
 
 declare var google;
 let map: any;
@@ -26,25 +27,29 @@ let options = {
 })
 export class ShopPage {
   @ViewChild('map') mapElement: ElementRef;
-  public stores=[];
+  public stores = [];
   public storetype = "";
   public location = "";
+  public storeInfo = [];
+  public addresses = [];
+  public urls = []
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    
+
   }
 
   navigateToSearchResults() {
     console.log("Navigating..");
     this.navCtrl.push(SearchResultsPage, {
       category: this.storetype,
-      zipcode: this.location
+      zipcode: this.location,
+      stores: this.stores
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShopPage');
-  } 
+  }
 
   getStoreType() {
     if (this.storetype == "clothing") {
@@ -74,8 +79,6 @@ export class ShopPage {
           var info = data.json();
           lat = info.results[0].geometry.location.lat;
           lng = info.results[0].geometry.location.lng;
-          console.log(lat);
-          console.log(lng);
           this.searchForStore(lat, lng);
         },
 
@@ -83,20 +86,15 @@ export class ShopPage {
           console.log(err);
         }
       );
-
-    //this.navigateToSearchResults();
+      setTimeout(this.navigateToSearchResults(), 10000);
   }
 
   searchForStore(latit: String, lngit: String) {
-    var storeResults = [];
-    console.log("here 1")
     var latlng = new google.maps.LatLng(latit, lngit);
-    console.log("here 2");
     map = new google.maps.Map(document.getElementById('map'), {
       center: latlng,
       zoom: 12
     });
-    console.log("here 3");
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location: { lat: latit, lng: lngit },
@@ -104,31 +102,47 @@ export class ShopPage {
       type: [this.storetype]
     }, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log("here 4");
-        for (var i = 0; i < results.length; i++) {
+        for (let i = 0; i < results.length; i++) {
           var name = results[i].name;
-          var lat = results[i].geometry.location.lat;
-          var lng = results[i].geometry.location.lng;
-          var id = results[i].id;
-          var address;
-          var url;
-          service.getDetails({
-            placeId: id
-          }, function(place, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              address = place.formatted_address;
-              url = place.website;
-            }
-          });
-          var store = new Store(name, this.storetype, address, url, lat, lng);
-          storeResults[i] = store; 
-          console.log(store);
+          var lat = results[i].geometry.location.lat();
+          var lng = results[i].geometry.location.lng();
+          var id = results[i].place_id;
+          var storet = this.storetype;
+          var store = new PartialStore(name, storet, lat, lng, id);
+          this.storeInfo[i] = store;
+          this.getDetails(id, i);
         }
       }
     }, (error: any) => {
       console.log(error);
-    }, true);
+    });
   }
 
+  async getDetails(id: String, i: number) {
+    var latlng = new google.maps.LatLng(this.storeInfo[i].lat, this.storeInfo[i].lng);
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: latlng,
+      zoom: 12
+    });
+    var service = new google.maps.places.PlacesService(map);
+    service.getDetails({
+      placeId: this.storeInfo[i].googleid
+    }, (place, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        this.addresses[i] = place.formatted_address;
+        this.urls[i] = place.website;
+        this.addStores(i);
+      }
+    }, (error: any) => {
+      console.log(error);
+    });
+  }
+
+
+addStores(index: number) {
+  var store = new Store(this.storeInfo[index].storename, this.storeInfo[index].storetype, this.addresses[index], this.urls[index], this.storeInfo[index].lat, this.storeInfo[index].lng, this.storeInfo[index].googleid);
+  this.stores[index] = store;
+  console.log(store);
+}
 }
 

@@ -26,7 +26,7 @@ import { OrderPage } from '../order/order';
 })
 export class SearchResultsPage {
 
-  public stores: Array<Store>;
+  public stores = [];
   public zip: String;
   public category: String;
   public categoryUppercase: String;
@@ -42,6 +42,7 @@ export class SearchResultsPage {
   constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController, public http: Http) {
     this.zip = navParams.get('zipcode');
     this.category = navParams.get('category');
+    this.stores = navParams.get('stores');
     this.categoryUppercase = navParams.get('category').toUpperCase();
   }
 
