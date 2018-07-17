@@ -26,7 +26,7 @@ let options = {
 })
 export class ShopPage {
   @ViewChild('map') mapElement: ElementRef;
-  public stores: Array<Store>;
+  public stores=[];
   public storetype = "";
   public location = "";
 

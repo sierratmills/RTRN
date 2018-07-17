@@ -28,14 +28,46 @@ export class SearchResultsPage {
 
   public stores: Array<Store>;
   public zip: String;
-  public category: String; 
+  public category: String;
   public categoryUppercase: String;
+  storename: string;
+  storetype: string;
+  url: string;
+  returnurl: string;
+  address: string
+  lat: string;
+  long: string;
+  googleid: string;
 
   constructor(public modalCtrl: ModalController, public navParams: NavParams, public navCtrl: NavController, public http: Http) {
     this.zip = navParams.get('zipcode');
     this.category = navParams.get('category');
     this.categoryUppercase = navParams.get('category').toUpperCase();
   }
+
+  createStore() {
+    this.http
+      .post("http://localhost:3000/createStore", {
+        storename: this.storename,
+        storetype: this.storetype,
+        url: this.url,
+        returnurl: this.returnurl,
+        address: this.address,
+        lat: this.lat,
+        long: this.long,
+        googleid: this.googleid,
+      }).subscribe(
+        result => {
+          var info = result.json();
+          console.log(info);
+        },
+
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
 
   presentStoreModal(store: StoreSitePage) {
     let profileModal = this.modalCtrl.create(StoreSitePage, { storeParameter: store, userId: 8675309 });
@@ -50,11 +82,11 @@ export class SearchResultsPage {
   }
 
   goToMap() {
-        this.navCtrl.push(MapPage);
+    this.navCtrl.push(MapPage);
   }
 
   navigateToCart() {
-        this.navCtrl.push(CartPage);
+    this.navCtrl.push(CartPage);
   }
 
   navigateToMain() {
