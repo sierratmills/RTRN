@@ -94,7 +94,7 @@ export class ShopPage {
           console.log(err);
         }
       );
-      setTimeout(this.navigateToSearchResults(), 15000);
+     //setTimeout(function() {this.navigateToSearchResults(); }, 15000);
   }
 
   searchForStore(latit: String, lngit: String) {
@@ -139,7 +139,12 @@ export class ShopPage {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         this.addresses[i] = place.formatted_address;
         this.urls[i] = place.website;
-        this.addStores(i);
+        var store = new Store(this.storeInfo[i].storename, this.storeInfo[i].storetype, this.addresses[i], this.urls[i], this.storeInfo[i].lat, this.storeInfo[i].lng, this.storeInfo[i].googleid);
+        this.stores[i] = store;
+        console.log(store);
+        setTimeout(() => { 
+          this.addStores(i); 
+        }, 2000);
       }
     }, (error: any) => {
       console.log(error);
@@ -147,19 +152,25 @@ export class ShopPage {
   }
 
 
-  addStores(index: number) {
-    var store = new Store(this.storeInfo[index].storename, this.storeInfo[index].storetype, this.addresses[index], this.urls[index], this.storeInfo[index].lat, this.storeInfo[index].lng, this.storeInfo[index].googleid);
-    this.stores[index] = store;
-    console.log(store);
+  addStores(i: number) {
+    console.log("in add stores");
+    console.log(this.stores[i]);
+    var name = this.stores[i].storename;
+    var type = this.stores[i].storetype;
+    var link = this.stores[i].url;
+    var add = this.stores[i].address;
+    var lt = this.stores[i].lat;
+    var lg = this.stores[i].lng;
+    var id = this.stores[i].googleid;
     this.http.post("http://localhost:3000/createstore",{
-      storename: store.storename,
-      storetype: store.storetype,
-      url: store.url,
+      storename: name,
+      storetype: type,
+      url: link,
       returnurl: "",
-      address: store.address,
-      lat: store.lat,
-      long: store.lng,
-      googleid: store.googleid
+      address: add,
+      lat: lt,
+      long: lg,
+      googleid: id
     }).subscribe(
       result => {
         console.log(result);
