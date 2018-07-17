@@ -42,7 +42,8 @@ export class ShopPage {
     console.log("Navigating..");
     this.navCtrl.push(SearchResultsPage, {
       category: this.storetype,
-      zipcode: this.location
+      zipcode: this.location,
+      stores: this.stores
     });
   }
 
@@ -79,15 +80,13 @@ export class ShopPage {
           lat = info.results[0].geometry.location.lat;
           lng = info.results[0].geometry.location.lng;
           this.searchForStore(lat, lng);
-          // this.getDetails();
-          // this.addStores();
         },
 
         (err: any) => {
           console.log(err);
         }
       );
-    //this.navigateToSearchResults();
+      setTimeout(this.navigateToSearchResults(), 10000);
   }
 
   searchForStore(latit: String, lngit: String) {
@@ -111,19 +110,16 @@ export class ShopPage {
           var storet = this.storetype;
           var store = new PartialStore(name, storet, lat, lng, id);
           this.storeInfo[i] = store;
-          //console.log(store);
-          //console.log("1: " + i);
+          this.getDetails(id, i);
         }
       }
-      this.getDetails();
     }, (error: any) => {
       console.log(error);
     });
   }
 
-  async getDetails() {
-    for (let i = 0; i < this.storeInfo.length; i++) {
-      var latlng = new google.maps.LatLng(this.storeInfo[i].lat, this.storeInfo[i].lng);
+  async getDetails(id: String, i: number) {
+    var latlng = new google.maps.LatLng(this.storeInfo[i].lat, this.storeInfo[i].lng);
     map = new google.maps.Map(document.getElementById('map'), {
       center: latlng,
       zoom: 12
@@ -140,14 +136,13 @@ export class ShopPage {
     }, (error: any) => {
       console.log(error);
     });
-    }
   }
 
 
-  addStores(index: number) {
-    var store = new Store(this.storeInfo[index].storename, this.storeInfo[index].storetype, this.addresses[index], this.urls[index], this.storeInfo[index].lat, this.storeInfo[index].lng, this.storeInfo[index].googleid);
-    this.stores[index] = store;
-    console.log(store);
-    }
+addStores(index: number) {
+  var store = new Store(this.storeInfo[index].storename, this.storeInfo[index].storetype, this.addresses[index], this.urls[index], this.storeInfo[index].lat, this.storeInfo[index].lng, this.storeInfo[index].googleid);
+  this.stores[index] = store;
+  console.log(store);
+}
 }
 
