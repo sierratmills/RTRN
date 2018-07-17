@@ -28,6 +28,7 @@ let options = {
 export class ShopPage {
   @ViewChild('map') mapElement: ElementRef;
   public stores = [];
+  public storesToStore = [];
   public storetype = "";
   public location = "";
   public storeInfo = [];
@@ -140,7 +141,8 @@ export class ShopPage {
         this.addresses[i] = place.formatted_address;
         this.urls[i] = place.website;
         var store = new Store(this.storeInfo[i].storename, this.storeInfo[i].storetype, this.addresses[i], this.urls[i], this.storeInfo[i].lat, this.storeInfo[i].lng, this.storeInfo[i].googleid);
-        this.stores[i] = store;
+        this.stores.push(store);
+        this.storesToStore[i] = store;
         console.log(store);
         setTimeout(() => { 
           this.addStores(i); 
@@ -154,14 +156,14 @@ export class ShopPage {
 
   addStores(i: number) {
     console.log("in add stores");
-    console.log(this.stores[i]);
-    var name = this.stores[i].storename;
-    var type = this.stores[i].storetype;
-    var link = this.stores[i].url;
-    var add = this.stores[i].address;
-    var lt = this.stores[i].lat;
-    var lg = this.stores[i].lng;
-    var id = this.stores[i].googleid;
+    console.log(this.storesToStore[i]);
+    var name = this.storesToStore[i].storename;
+    var type = this.storesToStore[i].storetype;
+    var link = this.storesToStore[i].url;
+    var add = this.storesToStore[i].address;
+    var lt = this.storesToStore[i].lat;
+    var lg = this.storesToStore[i].lng;
+    var id = this.storesToStore[i].googleid;
     this.http.post("http://localhost:3000/createstore",{
       storename: name,
       storetype: type,
